@@ -1,0 +1,27 @@
+
+.style1 {
+    background-color: #454545;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+.:active {
+    font-weight: bold;
+    background-color: #474747;
+    display: block
+}
+.style2 {
+    background-color: #8a8a8a
+}
+.style3 {
+    background-color: #8a8a8a
+}
+.style4 {
+    background-color: #8a8a8a
+}
+.:hover {
+    font-size: 25px;
+    font-weight: bold
+}

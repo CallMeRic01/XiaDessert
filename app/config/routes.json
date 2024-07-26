@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "path": "/login",
+      "page": "login",
+      "layout": "main"
+    },
+    {
+      "path": "/register",
+      "layout": "main",
+      "page": "register"
+    },
+    {
+      "path": "/accountValidation",
+      "layout": "main",
+      "page": "accountValidation"
+    },
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/admin_dashboard",
+      "page": "admin_dashboard",
+      "layout": "main",
+      "exec": "/api/security/isAdmin"
+    },
+    {
+      "path": "/admin_addProduct",
+      "page": "admin_addProduct",
+      "layout": "main",
+      "exec": "/api/security/isAdmin"
+    },
+    {
+      "path": "/admin_product",
+      "page": "admin_product",
+      "layout": "main"
+    },
+    {
+      "path": "/admin_order",
+      "page": "admin_order",
+      "layout": "main"
+    },
+    {
+      "path": "/login",
+      "page": "login",
+      "layout": "main"
+    },
+    {
+      "path": "/admin_staffManagement",
+      "page": "admin_staffManagement",
+      "layout": "main",
+      "exec": "/api/security/isAdmin"
+    },
+    {
+      "path": "/reset_password",
+      "page": "reset_password",
+      "layout": "main"
+    },
+    {
+      "path": "/test",
+      "page": "test",
+      "layout": "main"
+    }
+  ]
+}

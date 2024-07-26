@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "$_POST": [
+      {
+        "type": "number",
+        "name": "user_id"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "insert",
+      "module": "dbupdater",
+      "action": "insert",
+      "options": {
+        "connection": "db",
+        "sql": {
+          "type": "insert",
+          "values": [
+            {
+              "table": "user_clockInOut",
+              "column": "cIO_in",
+              "type": "time",
+              "value": "{{NOW}}"
+            },
+            {
+              "table": "user_clockInOut",
+              "column": "user_id",
+              "type": "number",
+              "value": "{{$_POST.user_id}}"
+            }
+          ],
+          "table": "user_clockInOut",
+          "returning": "cIO_id",
+          "query": "insert into `user_clockInOut` (`cIO_in`, `user_id`) values (?, ?)",
+          "params": [
+            {
+              "name": ":P1",
+              "type": "expression",
+              "value": "{{NOW}}",
+              "test": ""
+            },
+            {
+              "name": ":P2",
+              "type": "expression",
+              "value": "{{$_POST.user_id}}",
+              "test": ""
+            }
+          ]
+        }
+      },
+      "meta": [
+        {
+          "name": "identity",
+          "type": "text"
+        },
+        {
+          "name": "affected",
+          "type": "number"
+        }
+      ]
+    }
+  }
+}

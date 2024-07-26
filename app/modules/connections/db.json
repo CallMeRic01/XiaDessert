@@ -1,0 +1,19 @@
+{
+  "name": "db",
+  "module": "dbconnector",
+  "action": "connect",
+  "options": {
+    "client": "mysql2",
+    "connection": {
+      "host": "db",
+      "port": 3306,
+      "user": "db_user",
+      "password": "Xiad",
+      "database": "xiad"
+    },
+    "meta": {}
+  },
+  "actionFilePath": "file:///D:/XiaD/app/modules/connections/db.json",
+  "serverType": "node",
+  "fileName": "db.json"
+}

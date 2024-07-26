@@ -1,0 +1,564 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/admin_order.ejs",
+      "linkedForm": "serverconnectform1"
+    },
+    "$_POST": [
+      {
+        "type": "array",
+        "fieldName": "pro_id[]",
+        "multiple": true,
+        "name": "pro_id"
+      },
+      {
+        "type": "array",
+        "fieldName": "detOrd_quantity[]",
+        "multiple": true,
+        "name": "detOrd_quantity"
+      },
+      {
+        "type": "text",
+        "fieldName": "ord_totalAmount",
+        "name": "ord_totalAmount"
+      },
+      {
+        "type": "text",
+        "fieldName": "ord_date",
+        "name": "ord_date"
+      },
+      {
+        "type": "text",
+        "fieldName": "ord_changeAmount",
+        "name": "ord_changeAmount"
+      },
+      {
+        "type": "text",
+        "fieldName": "takeawayFee",
+        "name": "takeawayFee"
+      },
+      {
+        "type": "text",
+        "fieldName": "ord_isTA",
+        "name": "ord_isTA"
+      },
+      {
+        "type": "number",
+        "fieldName": "ord_paidCash",
+        "options": {
+          "rules": {
+            "core:number": {}
+          }
+        },
+        "name": "ord_paidCash"
+      },
+      {
+        "type": "text",
+        "fieldName": "ord_payMethod",
+        "name": "ord_payMethod"
+      },
+      {
+        "type": "number",
+        "fieldName": "ord_dis",
+        "options": {
+          "rules": {
+            "core:number": {}
+          }
+        },
+        "name": "ord_dis"
+      },
+      {
+        "type": "array",
+        "name": "record",
+        "sub": [
+          {
+            "type": "number",
+            "name": "pro_stock"
+          },
+          {
+            "type": "number",
+            "name": "pro_id"
+          },
+          {
+            "type": "number",
+            "name": "stock"
+          },
+          {
+            "type": "number",
+            "name": "g_stock"
+          },
+          {
+            "type": "number",
+            "name": "$_POST"
+          },
+          {
+            "type": "number",
+            "name": "repeatInsertDetails[0]"
+          },
+          {
+            "type": "number",
+            "name": "repeat"
+          },
+          {
+            "type": "number",
+            "name": "insertOrder"
+          },
+          {
+            "type": "datetime",
+            "name": "detOrd_date"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "fieldName": "pro_stock[]",
+        "multiple": true,
+        "name": "pro_stock"
+      },
+      {
+        "type": "text",
+        "fieldName": "detOrd_date",
+        "name": "detOrd_date"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "insertOrder",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "order",
+                "column": "ord_totalAmount",
+                "type": "number",
+                "value": "{{$_POST.ord_totalAmount}}",
+                "recid": 1
+              },
+              {
+                "table": "order",
+                "column": "ord_date",
+                "type": "datetime",
+                "value": "{{$_POST.ord_date}}",
+                "recid": 2
+              },
+              {
+                "table": "order",
+                "column": "ord_changeAmount",
+                "type": "number",
+                "value": "{{$_POST.ord_changeAmount}}",
+                "recid": 3
+              },
+              {
+                "table": "order",
+                "column": "ord_isTA",
+                "type": "boolean",
+                "value": "{{$_POST.ord_isTA}}",
+                "recid": 4
+              },
+              {
+                "table": "order",
+                "column": "ord_paidCash",
+                "type": "number",
+                "value": "{{$_POST.ord_paidCash}}",
+                "recid": 5
+              },
+              {
+                "table": "order",
+                "column": "ord_payMethod",
+                "type": "text",
+                "value": "{{$_POST.ord_payMethod}}",
+                "recid": 6
+              },
+              {
+                "table": "order",
+                "column": "ord_dis",
+                "type": "number",
+                "value": "{{$_POST.ord_dis}}",
+                "recid": 7
+              }
+            ],
+            "table": "order",
+            "returning": "ord_id",
+            "query": "insert into `order` (`ord_changeAmount`, `ord_date`, `ord_dis`, `ord_isTA`, `ord_paidCash`, `ord_payMethod`, `ord_totalAmount`) values (?, ?, ?, ?, ?, ?, ?)",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{$_POST.ord_totalAmount}}"
+              },
+              {
+                "name": ":P2",
+                "type": "expression",
+                "value": "{{$_POST.ord_date}}"
+              },
+              {
+                "name": ":P3",
+                "type": "expression",
+                "value": "{{$_POST.ord_changeAmount}}"
+              },
+              {
+                "name": ":P4",
+                "type": "expression",
+                "value": "{{$_POST.ord_isTA}}"
+              },
+              {
+                "name": ":P5",
+                "type": "expression",
+                "value": "{{$_POST.ord_paidCash}}"
+              },
+              {
+                "name": ":P6",
+                "type": "expression",
+                "value": "{{$_POST.ord_payMethod}}"
+              },
+              {
+                "name": ":P7",
+                "type": "expression",
+                "value": "{{$_POST.ord_dis}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ],
+        "output": true
+      },
+      {
+        "name": "repeatInsertDetails",
+        "module": "core",
+        "action": "repeat",
+        "options": {
+          "repeat": "{{$_POST.pro_id}}",
+          "outputFields": [],
+          "exec": {
+            "steps": [
+              {
+                "name": "validate",
+                "module": "validator",
+                "action": "validate",
+                "options": {
+                  "data": [
+                    {
+                      "name": "quantity",
+                      "value": "{{$_POST.detOrd_quantity.length() >= 1}}",
+                      "rules": {},
+                      "fieldName": "detOrd_quantity[]"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "insertDetails",
+                "module": "dbupdater",
+                "action": "insert",
+                "options": {
+                  "connection": "db",
+                  "sql": {
+                    "type": "insert",
+                    "values": [
+                      {
+                        "table": "detailsOrder",
+                        "column": "ord_id",
+                        "type": "number",
+                        "value": "{{insertOrder.identity}}"
+                      },
+                      {
+                        "table": "detailsOrder",
+                        "column": "pro_id",
+                        "type": "number",
+                        "value": "{{$_POST.pro_id[$index]}}"
+                      },
+                      {
+                        "table": "detailsOrder",
+                        "column": "detOrd_quantity",
+                        "type": "number",
+                        "value": "{{$_POST.detOrd_quantity[$index]}}"
+                      },
+                      {
+                        "table": "detailsOrder",
+                        "column": "detOrd_date",
+                        "type": "datetime",
+                        "value": "{{$_POST.detOrd_date}}"
+                      }
+                    ],
+                    "table": "detailsOrder",
+                    "returning": "detOrd_id",
+                    "query": "insert into `detailsOrder` (`detOrd_date`, `detOrd_quantity`, `ord_id`, `pro_id`) values (?, ?, ?, ?)",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{insertOrder.identity}}",
+                        "test": ""
+                      },
+                      {
+                        "name": ":P2",
+                        "type": "expression",
+                        "value": "{{$_POST.pro_id[$index]}}",
+                        "test": ""
+                      },
+                      {
+                        "name": ":P3",
+                        "type": "expression",
+                        "value": "{{$_POST.detOrd_quantity[$index]}}",
+                        "test": ""
+                      },
+                      {
+                        "name": ":P4",
+                        "type": "expression",
+                        "value": "{{$_POST.detOrd_date}}",
+                        "test": ""
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "identity",
+                    "type": "text"
+                  },
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ],
+                "output": true
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "name": "insertDetails",
+            "module": "dbupdater",
+            "action": "insert",
+            "options": {
+              "connection": "db",
+              "sql": {
+                "type": "insert",
+                "values": [
+                  {
+                    "table": "detailsOrder",
+                    "column": "ord_id",
+                    "type": "number",
+                    "value": "{{insertOrder.identity}}"
+                  },
+                  {
+                    "table": "detailsOrder",
+                    "column": "pro_id",
+                    "type": "number",
+                    "value": "{{$_POST.pro_id[$index]}}"
+                  },
+                  {
+                    "table": "detailsOrder",
+                    "column": "detOrd_quantity",
+                    "type": "number",
+                    "value": "{{$_POST.detOrd_quantity[$index]}}"
+                  }
+                ],
+                "table": "detailsOrder",
+                "query": "INSERT INTO `detailsOrder` (`ord_id`, `pro_id`, `detOrd_quantity`) VALUES (:P1, :P2, :P3)",
+                "params": [
+                  {
+                    "name": ":P1",
+                    "type": "expression",
+                    "value": "{{insertOrder.identity}}"
+                  },
+                  {
+                    "name": ":P2",
+                    "type": "expression",
+                    "value": "{{$_POST.pro_id[$index]}}"
+                  },
+                  {
+                    "name": ":P3",
+                    "type": "expression",
+                    "value": "{{$_POST.detOrd_quantity[$index]}}"
+                  }
+                ]
+              }
+            },
+            "meta": [
+              {
+                "name": "affected",
+                "type": "number"
+              }
+            ],
+            "output": true
+          }
+        ],
+        "meta": [
+          {
+            "name": "$index",
+            "type": "number"
+          },
+          {
+            "name": "$number",
+            "type": "number"
+          },
+          {
+            "name": "$name",
+            "type": "text"
+          },
+          {
+            "name": "$value",
+            "type": "object"
+          },
+          {
+            "name": "insertDetails",
+            "type": "text",
+            "sub": [
+              {
+                "name": "identity",
+                "type": "text"
+              },
+              {
+                "name": "affected",
+                "type": "number"
+              }
+            ]
+          }
+        ],
+        "outputType": "array",
+        "output": true
+      },
+      {
+        "name": "repeat",
+        "module": "core",
+        "action": "repeat",
+        "options": {
+          "repeat": "{{$_POST.pro_id}}",
+          "outputFields": [],
+          "exec": {
+            "steps": [
+              {
+                "name": "stock",
+                "module": "core",
+                "action": "setvalue",
+                "options": {
+                  "key": "g_stock",
+                  "value": "{{$_POST.pro_stock[$index]-$_POST.detOrd_quantity[$index]}}"
+                },
+                "meta": [],
+                "outputType": "number",
+                "output": true
+              },
+              {
+                "name": "update",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "db",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "product",
+                        "column": "pro_stock",
+                        "type": "number",
+                        "value": "{{stock}}",
+                        "recid": 1
+                      }
+                    ],
+                    "table": "product",
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "pro_id",
+                          "field": "pro_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.pro_id[$index]}}",
+                          "data": {
+                            "column": "pro_id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "pro_id",
+                    "query": "update `product` set `pro_stock` = ? where `pro_id` = ?",
+                    "params": [
+                      {
+                        "name": ":P1",
+                        "type": "expression",
+                        "value": "{{stock}}",
+                        "test": ""
+                      },
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P2",
+                        "value": "{{$_POST.pro_id[$index]}}",
+                        "test": ""
+                      }
+                    ]
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ],
+                "output": true
+              }
+            ]
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "name": "$index",
+            "type": "number"
+          },
+          {
+            "name": "$number",
+            "type": "number"
+          },
+          {
+            "name": "$name",
+            "type": "text"
+          },
+          {
+            "name": "$value",
+            "type": "object"
+          },
+          {
+            "name": "stock",
+            "type": "number",
+            "sub": []
+          },
+          {
+            "name": "update",
+            "type": "text",
+            "sub": [
+              {
+                "name": "affected",
+                "type": "number"
+              }
+            ]
+          }
+        ],
+        "outputType": "array"
+      }
+    ]
+  }
+}
