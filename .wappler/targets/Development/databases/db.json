@@ -113,57 +113,6 @@
           "salesReport": "br_id"
         }
       },
-      "payment": {
-        "columns": {
-          "pay_id": {
-            "db": {
-              "type": "increments",
-              "primary": true,
-              "nullable": false
-            }
-          },
-          "ord_id": {
-            "db": {
-              "type": "reference",
-              "primary": false,
-              "nullable": true,
-              "references": "ord_id",
-              "inTable": "order",
-              "referenceType": "integer",
-              "onUpdate": "CASCADE",
-              "onDelete": "CASCADE"
-            }
-          },
-          "pay_paid": {
-            "db": {
-              "type": "decimal",
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "pay_change": {
-            "db": {
-              "type": "decimal",
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "pay_method": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          }
-        },
-        "db": {
-          "engine": "InnoDB",
-          "schema": "xiad",
-          "collation": "utf8mb4_unicode_ci",
-          "system_versioned": false
-        }
-      },
       "promotion": {
         "columns": {
           "promo_id": {
@@ -206,6 +155,57 @@
           "promo_endDate": {
             "db": {
               "type": "date",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        }
+      },
+      "payment": {
+        "columns": {
+          "pay_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "ord_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "ord_id",
+              "inTable": "order",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "pay_paid": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pay_change": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pay_method": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
               "primary": false,
               "nullable": true
             }
@@ -398,6 +398,9 @@
         "refs": {
           "detailsOrder": "pro_id",
           "order": "pro_id"
+        },
+        "sub": {
+          "productByDay": "pro_id"
         }
       },
       "user": {
@@ -466,7 +469,12 @@
             }
           }
         },
-        "db": {},
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
         "sub": {
           "user_clockInOut": "user_id"
         }
@@ -828,9 +836,61 @@
             }
           }
         },
-        "db": {},
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
         "tablePrefix": "user_",
         "parent": "user"
+      },
+      "productByDay": {
+        "columns": {
+          "pd_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "pd_day": {
+            "db": {
+              "type": "enum",
+              "enumValues": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "maxLength": 9,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pro_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "pro_id",
+              "inTable": "product",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "parent": "product"
       }
     },
     "views": {},

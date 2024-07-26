@@ -30,5 +30,13 @@
   "test.ejs": {
     "layoutPage": "main",
     "description": ""
+  },
+  "test_admin_product.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "test_admin_order.ejs": {
+    "layoutPage": "main",
+    "description": ""
   }
 }

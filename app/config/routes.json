@@ -63,6 +63,16 @@
       "path": "/test",
       "page": "test",
       "layout": "main"
+    },
+    {
+      "path": "/test_admin_product",
+      "page": "test_admin_product",
+      "layout": "main"
+    },
+    {
+      "path": "/test_admin_order",
+      "page": "test_admin_order",
+      "layout": "main"
     }
   ]
 }

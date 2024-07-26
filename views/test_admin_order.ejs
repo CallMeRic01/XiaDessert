@@ -10,7 +10,7 @@
 <dmx-variable id="totalSalesToday" value="0"></dmx-variable>
 <dmx-serverconnect id="conn_productsByDay" url="/api/admin/product/getProductsByDay" dmx-param:dayOfWeek="currentTime.datetime.formatDate('dddd')"></dmx-serverconnect>
 
-<meta name="ac:route" content="/admin_order">
+<meta name="ac:route" content="/test_admin_order">
 <%- await include('/partials/navbar', Object.assign({}, locals)) %>
 
 <link rel="stylesheet" href="/css/style.css">
