@@ -1,6 +1,11 @@
 {
   "routes": [
     {
+      "path": "/partials/navbar",
+      "page": "partials/navbar",
+      "layout": "main"
+    },
+    {
       "path": "/login",
       "page": "login",
       "layout": "main"
@@ -57,21 +62,6 @@
     {
       "path": "/reset_password",
       "page": "reset_password",
-      "layout": "main"
-    },
-    {
-      "path": "/test",
-      "page": "test",
-      "layout": "main"
-    },
-    {
-      "path": "/test_admin_product",
-      "page": "test_admin_product",
-      "layout": "main"
-    },
-    {
-      "path": "/test_admin_order",
-      "page": "test_admin_order",
       "layout": "main"
     }
   ]

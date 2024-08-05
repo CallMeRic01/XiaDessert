@@ -4,6 +4,14 @@
       {
         "type": "text",
         "name": "selected_date"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
       }
     ]
   },
@@ -20,7 +28,8 @@
             {
               "name": ":selected_date",
               "value": "{{$_GET.selected_date}}",
-              "test": "2024-7-22"
+              "test": "2024-7-22",
+              "recid": 1
             }
           ]
         }

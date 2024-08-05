@@ -1,7 +1,7 @@
 <!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="admin_order" appConnect="local" components="{dmxBootstrap5TableGenerator:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxFormRepeat:{},dmxDatastore:{},dmxFormatter:{},dmxBootstrap5Tooltips:{},dmxBootstrap5Popovers:{},dmxTyped:{},dmxBootstrap5Alert:{}}" -->
 <dmx-serverconnect id="conn_totalSalesToday" url="/api/admin/sales/totalSalesToday"></dmx-serverconnect>
 <dmx-serverconnect id="conn_stockUpdate" url="/api/admin/order/updateStock"></dmx-serverconnect>
-<dmx-datastore id="cart"></dmx-datastore>
+<dmx-datastore id="cart" session="true"></dmx-datastore>
 <dmx-datetime id="currentTime"></dmx-datetime>
 <dmx-serverconnect id="conn_pullProduct" url="/api/admin/order/pullProduct"></dmx-serverconnect>
 <dmx-serverconnect id="conn_createOrder" url="/api/admin/order/createOrder"></dmx-serverconnect>
@@ -85,7 +85,7 @@
                     <input type="hidden" id="orderDateTime1" name="detOrd_date" dmx-bind:value="currentTime.datetime">
                     <input type="hidden" id="changeAmount" name="ord_changeAmount" dmx-bind:value="paymentMethod.value == 'Cash' ? (order_amountPaid.value - ((cart.data.sum(`(pro_price * detOrd_quantity)`)).round(2) * (1 - order_discount.value / 100) + takeawayFee.value)).round(2) : 0">
                     <div>
-                        <p>Total Amount: RM {{(cart.data.sum(`(pro_price * detOrd_quantity)`)).round(2) * (1 - order_discount.value / 100) + takeawayFee.value}}</p>
+                        <p>Total Amount: RM {{(cart.data.sum(`(pro_price * detOrd_quantity)`)).round(2) * (1 - order_discount.value / 100).round(2) + takeawayFee.value}}</p>
                     </div>
                     <div class="form-group">
                         <label for="order_discount">Discount (%): </label>

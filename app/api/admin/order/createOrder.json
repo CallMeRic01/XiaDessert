@@ -275,25 +275,29 @@
                         "table": "detailsOrder",
                         "column": "ord_id",
                         "type": "number",
-                        "value": "{{insertOrder.identity}}"
+                        "value": "{{insertOrder.identity}}",
+                        "recid": 1
                       },
                       {
                         "table": "detailsOrder",
                         "column": "pro_id",
                         "type": "number",
-                        "value": "{{$_POST.pro_id[$index]}}"
+                        "value": "{{$_POST.pro_id[$index]}}",
+                        "recid": 2
                       },
                       {
                         "table": "detailsOrder",
                         "column": "detOrd_quantity",
                         "type": "number",
-                        "value": "{{$_POST.detOrd_quantity[$index]}}"
+                        "value": "{{$_POST.detOrd_quantity[$index]}}",
+                        "recid": 3
                       },
                       {
                         "table": "detailsOrder",
                         "column": "detOrd_date",
                         "type": "datetime",
-                        "value": "{{$_POST.detOrd_date}}"
+                        "value": "{{$_POST.detOrd_date}}",
+                        "recid": 4
                       }
                     ],
                     "table": "detailsOrder",

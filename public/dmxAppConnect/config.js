@@ -27,6 +27,24 @@ dmx.config({
         }
       ],
       "outputType": "array"
-    }
+    },
+    "clockInStore": [
+      {
+        "type": "boolean",
+        "name": "clockedIn"
+      },
+      {
+        "type": "text",
+        "name": "clockInTime"
+      },
+      {
+        "type": "text",
+        "name": "user_id"
+      },
+      {
+        "type": "text",
+        "name": "clockOutTime"
+      }
+    ]
   }
 });

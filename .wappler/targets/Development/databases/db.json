@@ -469,12 +469,7 @@
             }
           }
         },
-        "db": {
-          "engine": "InnoDB",
-          "schema": "xiad",
-          "collation": "utf8mb4_unicode_ci",
-          "system_versioned": false
-        },
+        "db": {},
         "sub": {
           "user_clockInOut": "user_id"
         }
@@ -792,59 +787,6 @@
           "system_versioned": false
         }
       },
-      "user_clockInOut": {
-        "columns": {
-          "cIO_id": {
-            "db": {
-              "type": "increments",
-              "primary": true,
-              "nullable": false
-            }
-          },
-          "cIO_in": {
-            "db": {
-              "type": "timestamp",
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "cIO_out": {
-            "db": {
-              "type": "timestamp",
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "user_id": {
-            "db": {
-              "type": "reference",
-              "primary": false,
-              "nullable": true,
-              "references": "user_id",
-              "inTable": "user",
-              "referenceType": "integer",
-              "onUpdate": "CASCADE",
-              "onDelete": "CASCADE"
-            }
-          },
-          "cIO_hrsWorked": {
-            "db": {
-              "type": "timestamp",
-              "maxLength": 255,
-              "primary": false,
-              "nullable": true
-            }
-          }
-        },
-        "db": {
-          "engine": "InnoDB",
-          "schema": "xiad",
-          "collation": "utf8mb4_unicode_ci",
-          "system_versioned": false
-        },
-        "tablePrefix": "user_",
-        "parent": "user"
-      },
       "productByDay": {
         "columns": {
           "pd_id": {
@@ -891,6 +833,60 @@
           "system_versioned": false
         },
         "parent": "product"
+      },
+      "user_clockInOut": {
+        "columns": {
+          "cIO_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "cIO_in": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cIO_out": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "user",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "cIO_date": {
+            "db": {
+              "type": "date",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cIO_hrsWorked": {
+            "db": {
+              "type": "time",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "db": {},
+        "tablePrefix": "user_",
+        "parent": "user"
       }
     },
     "views": {},

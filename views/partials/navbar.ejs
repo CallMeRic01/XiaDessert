@@ -1,56 +1,13 @@
 <!-- Include Wappler dependencies and components -->
-<!-- Wappler include head-page="layouts/main" appconnect="local" is="dmx-app" bootstrap5="local" fontawesome_5="cdn" components="{dmxBootstrap5Navigation:{},dmxValidator:{},dmxBootbox5:{},dmxBrowser:{},dmxBootstrap5Alert:{},dmxDataTraversal:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxBootstrap5TableGenerator:{}}" id="navbar" -->
+<!-- Wappler include head-page="layouts/main" appconnect="local" is="dmx-app" bootstrap5="local" fontawesome_5="cdn" components="{dmxBootstrap5Navigation:{},dmxValidator:{},dmxBootbox5:{},dmxBrowser:{},dmxBootstrap5Alert:{},dmxDataTraversal:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxDatastore:{},dmxFormatter:{}}" id="navbar" -->
+<meta name="ac:route" content="/partials/navbar">
+<dmx-datastore id="clockInStore"></dmx-datastore>
 <dmx-serverconnect id="conn_oneStaff" url="/api/security/users/viewStaff" noload="true"></dmx-serverconnect>
 
-<div class="alert" id="alert1" is="dmx-bs5-alert" role="alert">
-    <p>You are not authorized!</p>
-</div>
 
 <link rel="stylesheet" href="/css/style.css">
 
 <header class="mb-4">
-    <form id="clockInOut" method="post" action="/api/admin/employee/clockInOut" is="dmx-serverconnect-form" dmx-on:success="">
-        <div class="modal" id="clockInOutModal" is="dmx-bs5-modal" tabindex="-1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Clock In/Out</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Name</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="conn_employees.data.query" id="tableRepeat1">
-                                    <tr>
-                                        <td dmx-text="user_id"></td>
-                                        <td dmx-text="user_firstName + ' ' + user_lastName"></td>
-                                        <td>
-                                            <!-- Clock In Button -->
-                                            <button id="btnClockIn" class="btn btn-primary" dmx-show="!clockedIn.value" dmx-on:click="conn_clockInOut.load({action: 'clockIn', user_id: conn_oneStaff.data.query.user_id});clockedIn.setValue(true);clockInTime.setValue(currentTime.datetime);notifies1.success(conn_oneStaff.data.query.user_firstName+'Clocked in')" type="submit">Clock In</button>
-
-                                            <!-- Clock Out Button and Timer -->
-                                            <div dmx-show="clockedIn.value">
-                                                <button id="btnClockOut" class="btn btn-danger" dmx-on:click="conn_clockInOut.load({action: 'clockOut', user_id: user_id});clockedIn.setValue(false)">Clock Out</button>
-                                                <span dmx-text="(currentTime.datetime - clockInTime.value).formatDuration('hh:mm:ss')"></span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3 mb-5 bg-body rounded">
         <div class="container">
             <div is="dmx-browser" id="browser1"></div>
@@ -66,7 +23,7 @@
                     <a class="nav-item nav-link" href="/admin_product" id="Product_list">Products</a>
                     <a class="nav-item nav-link" href="/admin_order" id="POS_page">POS</a>
                     <a class="nav-item nav-link" href="/admin_staffManagement" id="StaffManagement">Staff Management</a>
-                    <a class="nav-item nav-link" dmx-on:click="clockInOut.clockInOutModal.show()">Clock In/Out</a>
+                    <a class="nav-item nav-link" dmx-on:click="clockInOutModal.show()">Clock In/Out</a>
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbar1_dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Account
@@ -83,11 +40,70 @@
         </div>
     </nav>
 
+    <div class="modal" id="clockInOutModal" is="dmx-bs5-modal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Clock In/Out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p>User: {{select1.value}}</p>
+                    <select id="select1" name="user_id2" class="form-select" dmx-bind:options="conn_employees.data.query" optiontext="user_firstName+' '+user_lastName" optionvalue="user_id">
+                        <option value="" disabled selected>Select User</option>
+                    </select>
+
+                    <div class="mt-3">
+                        <!-- Clock In Button -->
+                        <button class="btn btn-primary" id="clockInBtn" dmx-show="!clockInStore.data.where('user_id', select1.value).where('clockInTime.formatDate(&quot;yyyy-MM-dd&quot;)', currentTime.datetime.formatDate(&quot;yyyy-MM-dd&quot;)).hasItems()" dmx-on:click="clockInStore.upsert({user_id: select1.value},{clockedIn: true, clockInTime: currentTime.datetime.formatDate('yyyy-MM-dd hh:mm'), user_id: select1.value})">Clock In</button>
+                        <!-- Clock Out Button -->
+                        <button class="btn btn-danger" id="clockOutBtn" dmx-show="clockInStore.data.where('user_id', select1.value).where('clockInTime.formatDate(&quot;yyyy-MM-dd&quot;)', currentTime.datetime.formatDate(&quot;yyyy-MM-dd&quot;)).hasItems()" dmx-on:click="clockInStore.update({user_id: select1.value},{clockOutTime: currentTime.datetime})">Clock Out</button>
+                    </div>
+
+
+                    <form id="clockInOut" method="post" action="/api/admin/employee/clockInOut" is="dmx-serverconnect-form" dmx-on:success="notifies1.success('Recorded ');clockInOut.reset()" dmx-on:error="notifies1.warning(conn_clockInOut.lastError.response)">
+                        <div class="table-responsive mt-3">
+                            <table class="table table-striped table-bordered table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>$id</th>
+                                        <th>Clocked in</th>
+                                        <th>Clock in time</th>
+                                        <th>User</th>
+                                        <th scope="row">Header</th>
+                                        <th>Clock out time</th>
+                                    </tr>
+                                </thead>
+                                <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="clockInStore.data" id="tableRepeat3">
+                                    <tr>
+                                        <td dmx-text="$id"></td>
+                                        <td dmx-text="clockedIn"></td>
+                                        <td dmx-text="clockInTime.formatDate('yyyy-MM-dd HH:mm')"></td>
+                                        <td dmx-text="user_id"></td>
+                                        <td>
+                                            <input id="cIO_in{{$index}}" name="cIO_in[]" class="form-control" dmx-bind:value="clockInTime.formatDate('yyyy-MM-dd H:mm')" type="hidden">
+                                            <input id="users_id{{$index}}" name="user_id[]" class="form-control" dmx-bind:value="user_id" type="hidden">
+                                            <input id="cIO_out{{$index}}" name="cIO_out[]" class="form-control" dmx-bind:value="clockOutTime.formatDate('yyyy-MM-dd HH:mm')" type="hidden">
+                                        </td>
+                                        <td dmx-text="clockOutTime.formatDate('yyyy-MM-dd hh:mm')"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button id="btn1" class="btn btn-outline-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <dmx-serverconnect id="conn_employees" url="/api/admin/employee/list"></dmx-serverconnect>
     <dmx-serverconnect id="conn_clockInOut" url="/api/admin/employee/clockInOut" noload></dmx-serverconnect>
     <dmx-data-detail id="selectedEmployee" dmx-bind:data="conn_employees.data"></dmx-data-detail>
     <dmx-notifications id="notifies1"></dmx-notifications>
-    <dmx-datetime id="currentTime"></dmx-datetime>
-    <dmx-value id="clockedIn" dmx-bind:value="false"></dmx-value>
-    <dmx-value id="clockInTime" dmx-bind:value=""></dmx-value>
+    <dmx-datetime id="currentTime" interval="1000"></dmx-datetime>
 </header>

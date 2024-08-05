@@ -1,5 +1,9 @@
 {
   "navbar.ejs": {
-    "layoutPage": "main"
+    "layoutPage": "main",
+    "description": ""
+  },
+  "navigation.ejs": {
+    "description": ""
   }
 }
