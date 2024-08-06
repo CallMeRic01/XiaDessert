@@ -83,7 +83,7 @@
         "action": "setvalue",
         "options": {
           "key": "g_closing",
-          "value": "{{($_POST.totalSales+$_POST.rep_opening-$_POST.rep_expenses)}}"
+          "value": "{{profit+$_POST.rep_opening}}"
         },
         "meta": [],
         "outputType": "text"
@@ -101,37 +101,43 @@
                 "table": "salesReport",
                 "column": "rep_date",
                 "type": "datetime",
-                "value": "{{$_POST.rep_date}}"
+                "value": "{{$_POST.rep_date}}",
+                "recid": 1
               },
               {
                 "table": "salesReport",
                 "column": "rep_opening",
                 "type": "number",
-                "value": "{{$_POST.rep_opening}}"
+                "value": "{{$_POST.rep_opening}}",
+                "recid": 2
               },
               {
                 "table": "salesReport",
                 "column": "rep_closing",
                 "type": "number",
-                "value": "{{g_closing}}"
+                "value": "{{g_closing}}",
+                "recid": 3
               },
               {
                 "table": "salesReport",
                 "column": "rep_expenses",
                 "type": "number",
-                "value": "{{$_POST.rep_expenses}}"
+                "value": "{{$_POST.rep_expenses}}",
+                "recid": 4
               },
               {
                 "table": "salesReport",
                 "column": "rep_remarks",
                 "type": "text",
-                "value": "{{$_POST.rep_remarks}}"
+                "value": "{{$_POST.rep_remarks}}",
+                "recid": 5
               },
               {
                 "table": "salesReport",
                 "column": "rep_proLoss",
                 "type": "number",
-                "value": "{{g_profit}}"
+                "value": "{{g_profit}}",
+                "recid": 6
               }
             ],
             "table": "salesReport",
