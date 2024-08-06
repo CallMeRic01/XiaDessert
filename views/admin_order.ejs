@@ -115,7 +115,7 @@
                         <span dmx-show="(order_amountPaid.value - (cart.data.sum(`(pro_price * detOrd_quantity)`)).round(2) * (1 - order_discount.value / 100) - takeawayFee.value).round(2) >= 0">{{(order_amountPaid.value - (cart.data.sum(`(pro_price * detOrd_quantity)`)).round(2) * (1 - order_discount.value / 100) - takeawayFee.value).round(2)}}</span>
                     </div>
                     <button class="btn btn-success mt-3" type="submit" dmx-bind:disabled="cart.data.count()==0||insufficientStock.value||(paymentMethod.value == 'Cash' && (order_amountPaid.value - ((cart.data.sum(`(pro_price * detOrd_quantity)`)).round(2) * (1 - order_discount.value / 100) + takeawayFee.value)).round(2) < 0)">Submit Order</button>
-                    <button id="btn3" class="btn mt-3 btn-outline-warning" dmx-on:click="conn_totalSalesToday.load({});ClosingModal.show()">Closing</button>
+                    <button id="btn3" class="btn mt-3 btn-outline-warning" dmx-on:click="ClosingModal.show()">Closing</button>
                     <div class="alert alert-danger mt-3" dmx-show="tableRepeat1[0].detOrd_quantity > tableRepeat1[0].pro_stock" id="InsufficientStock">Insufficient stock for one or more products in the cart.</div>
                 </div>
                 <div class="col-md-12 text-center mt-3">
