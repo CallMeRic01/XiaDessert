@@ -66,7 +66,8 @@
         },
         "refs": {
           "crm": "cus_id",
-          "order": "cust_id"
+          "order": "cust_id",
+          "detailsOrder": "cust_id"
         }
       },
       "branch": {
@@ -396,8 +397,8 @@
           "system_versioned": false
         },
         "refs": {
-          "detailsOrder": "pro_id",
-          "order": "pro_id"
+          "order": "pro_id",
+          "detailsOrder": "pro_id"
         },
         "sub": {
           "productByDay": "pro_id"
@@ -469,7 +470,12 @@
             }
           }
         },
-        "db": {},
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
         "sub": {
           "user_clockInOut": "user_id"
         }
@@ -505,61 +511,6 @@
           "schema": "xiad",
           "collation": "utf8mb4_unicode_ci",
           "system_versioned": false
-        }
-      },
-      "detailsOrder": {
-        "db": {
-          "engine": "InnoDB",
-          "schema": "xiad",
-          "collation": "utf8mb4_unicode_ci",
-          "system_versioned": false
-        },
-        "columns": {
-          "detOrd_id": {
-            "db": {
-              "type": "increments",
-              "primary": true,
-              "nullable": false
-            }
-          },
-          "ord_id": {
-            "db": {
-              "type": "reference",
-              "primary": false,
-              "nullable": true,
-              "references": "ord_id",
-              "inTable": "order",
-              "referenceType": "integer",
-              "onUpdate": "CASCADE",
-              "onDelete": "CASCADE"
-            }
-          },
-          "pro_id": {
-            "db": {
-              "type": "reference",
-              "primary": false,
-              "nullable": true,
-              "references": "pro_id",
-              "inTable": "product",
-              "referenceType": "integer",
-              "onUpdate": "CASCADE",
-              "onDelete": "CASCADE"
-            }
-          },
-          "detOrd_quantity": {
-            "db": {
-              "type": "integer",
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "detOrd_date": {
-            "db": {
-              "type": "datetime",
-              "primary": false,
-              "nullable": true
-            }
-          }
         }
       },
       "order": {
@@ -884,9 +835,76 @@
             }
           }
         },
-        "db": {},
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
         "tablePrefix": "user_",
         "parent": "user"
+      },
+      "detailsOrder": {
+        "db": {},
+        "columns": {
+          "detOrd_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "ord_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "ord_id",
+              "inTable": "order",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "pro_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "pro_id",
+              "inTable": "product",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "detOrd_quantity": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "detOrd_date": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cust_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "cust_id",
+              "inTable": "customer",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
       }
     },
     "views": {},

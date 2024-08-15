@@ -1,0 +1,356 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ],
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "cust_num",
+        "name": "cust_num"
+      },
+      {
+        "type": "number",
+        "fieldName": "ord_id",
+        "name": "ord_id"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "query_customer",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "customer",
+                "column": "cust_loyalP",
+                "recid": 1
+              },
+              {
+                "table": "customer",
+                "column": "cust_id",
+                "recid": 2
+              }
+            ],
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_POST.cust_num}}",
+                "test": ""
+              }
+            ],
+            "table": {
+              "name": "customer"
+            },
+            "query": "select `cust_loyalP`, `cust_id` from `customer` where `customer`.`cust_num` = ?",
+            "primary": "cust_id",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "customer.cust_num",
+                  "field": "customer.cust_num",
+                  "type": "string",
+                  "operator": "equal",
+                  "value": "{{$_POST.cust_num}}",
+                  "data": {
+                    "table": "customer",
+                    "column": "cust_num",
+                    "type": "text",
+                    "columnObj": {
+                      "type": "string",
+                      "maxLength": 255,
+                      "primary": false,
+                      "nullable": true,
+                      "name": "cust_num"
+                    }
+                  },
+                  "operation": "=",
+                  "table": "customer"
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            }
+          }
+        },
+        "output": true,
+        "outputType": "array",
+        "meta": [
+          {
+            "type": "number",
+            "name": "cust_loyalP"
+          },
+          {
+            "type": "number",
+            "name": "cust_id"
+          }
+        ]
+      },
+      {
+        "name": "query_order",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "detailsOrder",
+                "column": "detOrd_quantity",
+                "recid": 1
+              }
+            ],
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_POST.ord_id}}",
+                "test": ""
+              }
+            ],
+            "table": {
+              "name": "detailsOrder"
+            },
+            "primary": "detOrd_id",
+            "joins": [],
+            "query": "select `detOrd_quantity` from `detailsOrder` where `detailsOrder`.`ord_id` = ?",
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "detailsOrder.ord_id",
+                  "field": "detailsOrder.ord_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_POST.ord_id}}",
+                  "data": {
+                    "table": "detailsOrder",
+                    "column": "ord_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "reference",
+                      "primary": false,
+                      "nullable": true,
+                      "references": "ord_id",
+                      "inTable": "order",
+                      "referenceType": "integer",
+                      "onUpdate": "CASCADE",
+                      "onDelete": "CASCADE",
+                      "name": "ord_id"
+                    }
+                  },
+                  "operation": "=",
+                  "table": "detailsOrder"
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            }
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "detOrd_quantity"
+          }
+        ],
+        "outputType": "array"
+      },
+      {
+        "name": "total_quantity",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "key": "g_total_quantity",
+          "value": "{{query_order.sum('detOrd_quantity')}}"
+        },
+        "meta": [
+          {
+            "name": "detOrd_quantity",
+            "type": "number"
+          }
+        ],
+        "outputType": "text"
+      },
+      {
+        "name": "new_loyalty_points",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "key": "g_new_loyalty_points",
+          "value": "{{query_customer[0].cust_loyalP+total_quantity}}"
+        },
+        "meta": [
+          {
+            "name": "cust_loyalP",
+            "type": "number"
+          },
+          {
+            "name": "cust_id",
+            "type": "number"
+          }
+        ],
+        "outputType": "text"
+      },
+      {
+        "name": "condition_check",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{g_new_loyalty_points>=9}}",
+          "then": {
+            "steps": [
+              {
+                "name": "reset_points",
+                "module": "dbupdater",
+                "action": "update",
+                "options": {
+                  "connection": "db",
+                  "sql": {
+                    "type": "update",
+                    "values": [
+                      {
+                        "table": "customer",
+                        "column": "cust_loyalP",
+                        "type": "number",
+                        "value": 0,
+                        "recid": 1
+                      }
+                    ],
+                    "table": "customer",
+                    "query": "update `customer` set `cust_loyalP` = ? where `cust_id` = ?",
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{query_customer[0].cust_id}}"
+                      }
+                    ],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "cust_id",
+                          "field": "cust_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{query_customer[0].cust_id}}",
+                          "data": {
+                            "column": "cust_id"
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "returning": "cust_id"
+                  }
+                },
+                "meta": [
+                  {
+                    "name": "affected",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "name": "Notify",
+                "module": "core",
+                "action": "response",
+                "options": {
+                  "status": 200,
+                  "data": "Congratz, you earned a free drink! Points reset. "
+                }
+              }
+            ]
+          },
+          "else": {
+            "steps": {
+              "name": "update_points",
+              "module": "dbupdater",
+              "action": "update",
+              "options": {
+                "connection": "db",
+                "sql": {
+                  "type": "update",
+                  "values": [
+                    {
+                      "table": "customer",
+                      "column": "cust_loyalP",
+                      "type": "number",
+                      "value": "{{g_new_loyalty_points}}",
+                      "recid": 1
+                    }
+                  ],
+                  "table": "customer",
+                  "query": "update `customer` set `cust_loyalP` = ? where `cust_id` = ?",
+                  "params": [
+                    {
+                      "name": ":P1",
+                      "type": "expression",
+                      "value": "{{g_new_loyalty_points}}"
+                    },
+                    {
+                      "operator": "equal",
+                      "type": "expression",
+                      "name": ":P2",
+                      "value": "{{query_customer[0].cust_id}}"
+                    }
+                  ],
+                  "wheres": {
+                    "condition": "AND",
+                    "rules": [
+                      {
+                        "id": "cust_id",
+                        "field": "cust_id",
+                        "type": "double",
+                        "operator": "equal",
+                        "value": "{{query_customer[0].cust_id}}",
+                        "data": {
+                          "column": "cust_id"
+                        },
+                        "operation": "="
+                      }
+                    ],
+                    "conditional": null,
+                    "valid": true
+                  },
+                  "returning": "cust_id"
+                }
+              },
+              "meta": [
+                {
+                  "name": "affected",
+                  "type": "number"
+                }
+              ]
+            }
+          }
+        },
+        "outputType": "boolean"
+      }
+    ]
+  }
+}

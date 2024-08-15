@@ -63,6 +63,11 @@
       "path": "/reset_password",
       "page": "reset_password",
       "layout": "main"
+    },
+    {
+      "path": "/test_admin_order",
+      "page": "test_admin_order",
+      "layout": "main"
     }
   ]
 }
