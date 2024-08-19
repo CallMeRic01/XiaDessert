@@ -1,0 +1,13 @@
+{
+    "AWSEBDockerrunVersion": 1,
+    "Image": {
+        "Name": "riic0110/xiadessert:latest",
+        "Update": "true"
+    },
+    "Ports": [
+        {
+            "ContainerPort": "80"
+        }
+    ],
+    "Logging": "/var/log/nginx"
+}
