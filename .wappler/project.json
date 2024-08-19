@@ -52,5 +52,6 @@
   ],
   "activeTarget": "Development",
   "projectType": "web",
-  "extensions": []
+  "extensions": [],
+  "activeGitRemote": "XiaDessert"
 }
