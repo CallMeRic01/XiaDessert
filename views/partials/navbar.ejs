@@ -1,5 +1,5 @@
 <!-- Include Wappler dependencies and components -->
-<!-- Wappler include head-page="layouts/main" appconnect="local" is="dmx-app" bootstrap5="local" fontawesome_5="cdn" components="{dmxBootstrap5Navigation:{},dmxValidator:{},dmxBootbox5:{},dmxBrowser:{},dmxBootstrap5Alert:{},dmxDataTraversal:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxDatastore:{},dmxFormatter:{}}" id="navbar" -->
+<!-- Wappler include head-page="layouts/main" appconnect="local" is="dmx-app" bootstrap5="local" fontawesome_5="cdn" components="{dmxBootstrap5Navigation:{},dmxValidator:{},dmxBootbox5:{},dmxBrowser:{},dmxBootstrap5Alert:{},dmxDataTraversal:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxDatastore:{},dmxFormatter:{},dmxBootstrap5TableGenerator:{}}" id="navbar" -->
 <meta name="ac:route" content="/partials/navbar">
 <dmx-datastore id="clockInStore"></dmx-datastore>
 <dmx-serverconnect id="conn_oneStaff" url="/api/security/users/viewStaff" noload="true"></dmx-serverconnect>
@@ -62,25 +62,23 @@
                     </div>
 
 
-                    <form id="clockInOut" method="post" action="/api/admin/employee/clockInOut" is="dmx-serverconnect-form" dmx-on:success="notifies1.success('Recorded ');clockInOut.reset()" dmx-on:error="notifies1.warning(conn_clockInOut.lastError.response)">
-                        <div class="table-responsive mt-3">
+                    <form id="clockInOut" method="post" action="/api/admin/employee/clockInOut" is="dmx-serverconnect-form" dmx-on:success="notifies1.success('Recorded ');clockInOut.reset();clockInStore.clear()" dmx-on:error="notifies1.warning(conn_clockInOut.lastError.response)">
+                        <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
-                                        <th>$id</th>
-                                        <th>Clocked in</th>
-                                        <th>Clock in time</th>
+                                        <th>ID</th>
                                         <th>User</th>
+                                        <th>Clock in time</th>
                                         <th scope="row">Header</th>
                                         <th>Clock out time</th>
                                     </tr>
                                 </thead>
-                                <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="clockInStore.data" id="tableRepeat3">
+                                <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="clockInStore.data" id="tableRepeat1">
                                     <tr>
                                         <td dmx-text="$id"></td>
-                                        <td dmx-text="clockedIn"></td>
-                                        <td dmx-text="clockInTime.formatDate('yyyy-MM-dd HH:mm')"></td>
                                         <td dmx-text="user_id"></td>
+                                        <td dmx-text="clockInTime.formatDate('yyyy-MM-dd HH:mm')"></td>
                                         <td>
                                             <input id="cIO_in{{$index}}" name="cIO_in[]" class="form-control" dmx-bind:value="clockInTime.formatDate('yyyy-MM-dd H:mm')" type="hidden">
                                             <input id="users_id{{$index}}" name="user_id[]" class="form-control" dmx-bind:value="user_id" type="hidden">

@@ -123,7 +123,8 @@
                       "name": "cIO_date"
                     }
                   },
-                  "operation": "="
+                  "operation": "=",
+                  "table": "user_clockInOut"
                 }
               ],
               "conditional": null,
@@ -352,20 +353,6 @@
                   "name": "hrsWorked",
                   "type": "time",
                   "sub": []
-                },
-                {
-                  "name": "insert",
-                  "type": "text",
-                  "sub": [
-                    {
-                      "name": "identity",
-                      "type": "text"
-                    },
-                    {
-                      "name": "affected",
-                      "type": "number"
-                    }
-                  ]
                 }
               ],
               "outputType": "array"
