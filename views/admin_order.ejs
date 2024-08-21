@@ -1,4 +1,4 @@
-<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="admin_order" appConnect="local" components="{dmxBootstrap5TableGenerator:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxFormRepeat:{},dmxDatastore:{},dmxFormatter:{},dmxBootstrap5Tooltips:{},dmxBootstrap5Popovers:{},dmxTyped:{},dmxBootstrap5Alert:{},dmxDatePicker:{},dmxGooglePlaces:{},dmxAutocomplete:{},dmxValidator:{}}" jquery_slim_35="cdn" moment_2="cdn" -->
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="admin_order" appConnect="local" components="{dmxBootstrap5TableGenerator:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxFormRepeat:{},dmxDatastore:{},dmxFormatter:{},dmxBootstrap5Tooltips:{},dmxBootstrap5Popovers:{},dmxTyped:{},dmxBootstrap5Alert:{},dmxDatePicker:{},dmxGooglePlaces:{},dmxAutocomplete:{},dmxValidator:{},dmxBootbox5:{}}" jquery_slim_35="cdn" moment_2="cdn" -->
 <dmx-serverconnect id="conn_customerList" url="/api/admin/loyalty/customerList" dmx-param:cust_num="serverconnectform1.CustSearch.value" dmx-param:cust_name="serverconnectform1.CustSearch.value"></dmx-serverconnect>
 <dmx-serverconnect id="conn_totalSalesToday" url="/api/admin/sales/totalSalesToday"></dmx-serverconnect>
 <dmx-serverconnect id="conn_stockUpdate" url="/api/admin/order/updateStock"></dmx-serverconnect>
@@ -45,7 +45,7 @@
 
         <div class="col-md-6">
             <h3 class="mt-3 visually-hidden">Cart</h3>
-            <form method="post" action="/api/admin/order/createOrder" dmx-on:success="notifies1.success('Order added successfully');serverconnectform1.reset();cart.clear();conn_pullProduct.load({});conn_customerList.load({});alert1.show()" dmx-on:error="notifies1.danger('Failed to submit order')" is="dmx-serverconnect-form" id="serverconnectform1">
+            <form method="post" action="/api/admin/order/createOrder" dmx-on:success="notifies1.success('Order added successfully');serverconnectform1.reset();cart.clear();conn_pullProduct.load({});conn_customerList.load({})" dmx-on:error="notifies1.danger('Failed to submit order')" is="dmx-serverconnect-form" id="serverconnectform1">
                 <div class="row">
                     <div class="col-md-6 visually-hidden">
                         <div class="table-responsive">
@@ -99,7 +99,8 @@
                             <div class="col-2">
                                 <button id="AddCust" class="btn text-bg-primary" dmx-on:click="CustomerReg.show()"><i class="fas fa-user-plus"></i></button>
                             </div>
-                            <p><b>Loyalty Points: {{conn_customerList.data.query.where('cust_id', CustomerSelect.value).values('cust_loyalP')[0]}}</b></p>
+                            <p><b>Loyalty Points: {{conn_customerList.data.query.where('cust_id', CustomerSelect.value).values('cust_loyalP')[0]}}</b><button id="btn4" class="btn text-bg-success mt-2 ms-4" dmx-on:click="pointsRedeem.MemberPointsRedeem.show()">Redeem Points</button></p>
+
                         </div>
 
                         <div class="divider"></div>
@@ -199,7 +200,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="CustReg" method="post" is="dmx-serverconnect-form" dmx-on:success="notifies1.success('Register Successfully');CustReg.reset();CustomerReg.hide()" action="/api/admin/loyalty/customerReg">
+                        <form id="CustReg" method="post" is="dmx-serverconnect-form" dmx-on:success="notifies1.success('Register Successfully');CustReg.reset();CustomerReg.hide();conn_customerList.load({})" action="/api/admin/loyalty/customerReg">
                             <div class="row">
                                 <div class="col">
                                     <p>Customer Name:</p>
@@ -264,5 +265,36 @@
                 </div>
             </div>
         </div>
+        <form id="pointsRedeem" method="post" is="dmx-serverconnect-form" action="/api/admin/loyalty/redeemPoints" dmx-on:success="notifies1.success('Redeemed Successfully!');conn_customerList.load({});conn_createOrder.load({});MemberPointsRedeem.hide()" dmx-on:error="notifies1.warning('Error! Please check your input.')">
+            <div class="modal" id="MemberPointsRedeem" is="dmx-bs5-modal" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Customer Name: {{serverconnectform1.CustomerSelect.selectedText}}</h5>
+                            <input id="customerRdpID" name="cust_id" type="number" class="form-control" dmx-bind:value="serverconnectform1.CustomerSelect.value">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Loyalty Points: {{conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0]}}</p>
+                            <p>Able to redeem: {{((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()}}</p>
+                            <div class="row">
+                                <div class="col">
+                                    <input id="pointsRedem" name="pointsToRedeem" type="range" class="form-control" dmx-bind:value="((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()" dmx-bind:max="((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()" min="1">
+                                </div>
+                                <div class="col-2">
+                                    <input id="pointsRdp" name="pRedeemed" type="number" class="form-control" dmx-bind:value="pointsRedem.value">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
     </div>
 </div>

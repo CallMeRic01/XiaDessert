@@ -309,36 +309,34 @@
                         "table": "detailsOrder",
                         "column": "ord_id",
                         "type": "number",
-                        "value": "{{insertOrder.identity}}"
+                        "value": "{{insertOrder.identity}}",
+                        "recid": 1
                       },
                       {
                         "table": "detailsOrder",
                         "column": "pro_id",
                         "type": "number",
-                        "value": "{{$_POST.pro_id[$index]}}"
+                        "value": "{{$_POST.pro_id[$index]}}",
+                        "recid": 2
                       },
                       {
                         "table": "detailsOrder",
                         "column": "detOrd_quantity",
                         "type": "number",
-                        "value": "{{$_POST.detOrd_quantity[$index]}}"
+                        "value": "{{$_POST.detOrd_quantity[$index]}}",
+                        "recid": 3
                       },
                       {
                         "table": "detailsOrder",
                         "column": "detOrd_date",
                         "type": "datetime",
-                        "value": "{{$_POST.detOrd_date}}"
-                      },
-                      {
-                        "table": "detailsOrder",
-                        "column": "cust_id",
-                        "type": "number",
-                        "value": "{{$_POST.cust_id}}"
+                        "value": "{{$_POST.detOrd_date}}",
+                        "recid": 4
                       }
                     ],
                     "table": "detailsOrder",
                     "returning": "detOrd_id",
-                    "query": "insert into `detailsOrder` (`cust_id`, `detOrd_date`, `detOrd_quantity`, `ord_id`, `pro_id`) values (?, ?, ?, ?, ?)",
+                    "query": "insert into `detailsOrder` (`detOrd_date`, `detOrd_quantity`, `ord_id`, `pro_id`) values (?, ?, ?, ?)",
                     "params": [
                       {
                         "name": ":P1",
@@ -362,12 +360,6 @@
                         "name": ":P4",
                         "type": "expression",
                         "value": "{{$_POST.detOrd_date}}",
-                        "test": ""
-                      },
-                      {
-                        "name": ":P5",
-                        "type": "expression",
-                        "value": "{{$_POST.cust_id}}",
                         "test": ""
                       }
                     ]
@@ -702,7 +694,8 @@
                     "columns": [
                       {
                         "table": "customer",
-                        "column": "cust_loyalP"
+                        "column": "cust_loyalP",
+                        "recid": 1
                       }
                     ],
                     "params": [
@@ -856,14 +849,9 @@
                 "action": "setvalue",
                 "options": {
                   "key": "g_freeDrinks",
-                  "value": "{{total_quantity.floor()/9}}"
+                  "value": "{{(total_quantity/9).floor()}}"
                 },
-                "meta": [
-                  {
-                    "name": "cust_loyalP",
-                    "type": "number"
-                  }
-                ],
+                "meta": [],
                 "outputType": "number",
                 "output": true
               },
@@ -891,7 +879,7 @@
                         "table": "customer",
                         "column": "cust_loyalP",
                         "type": "number",
-                        "value": "{{total_quantity}}",
+                        "value": "{{g_total_quantity}}",
                         "recid": 1
                       }
                     ],
@@ -901,6 +889,7 @@
                       "rules": [
                         {
                           "id": "cust_id",
+                          "field": "cust_id",
                           "type": "double",
                           "operator": "equal",
                           "value": "{{$_POST.cust_id}}",
@@ -909,7 +898,9 @@
                           },
                           "operation": "="
                         }
-                      ]
+                      ],
+                      "conditional": null,
+                      "valid": true
                     },
                     "returning": "cust_id",
                     "query": "update `customer` set `cust_loyalP` = ? where `cust_id` = ?",
@@ -917,7 +908,7 @@
                       {
                         "name": ":P1",
                         "type": "expression",
-                        "value": "{{total_quantity}}",
+                        "value": "{{g_total_quantity}}",
                         "test": ""
                       },
                       {
@@ -936,8 +927,7 @@
                     "type": "number"
                   }
                 ],
-                "output": true,
-                "disabled": true
+                "output": true
               },
               {
                 "name": "",
@@ -1079,7 +1069,103 @@
                     }
                   }
                 },
-                "outputType": "boolean"
+                "outputType": "boolean",
+                "disabled": true
+              },
+              {
+                "name": "query1",
+                "module": "dbconnector",
+                "action": "single",
+                "options": {
+                  "connection": "db",
+                  "sql": {
+                    "type": "select",
+                    "columns": [],
+                    "params": [
+                      {
+                        "operator": "equal",
+                        "type": "expression",
+                        "name": ":P1",
+                        "value": "{{$_POST.cust_id}}",
+                        "test": ""
+                      }
+                    ],
+                    "table": {
+                      "name": "customer"
+                    },
+                    "primary": "cust_id",
+                    "joins": [],
+                    "wheres": {
+                      "condition": "AND",
+                      "rules": [
+                        {
+                          "id": "customer.cust_id",
+                          "field": "customer.cust_id",
+                          "type": "double",
+                          "operator": "equal",
+                          "value": "{{$_POST.cust_id}}",
+                          "data": {
+                            "table": "customer",
+                            "column": "cust_id",
+                            "type": "number",
+                            "columnObj": {
+                              "type": "increments",
+                              "primary": true,
+                              "nullable": false,
+                              "name": "cust_id"
+                            }
+                          },
+                          "operation": "="
+                        }
+                      ],
+                      "conditional": null,
+                      "valid": true
+                    },
+                    "query": "select * from `customer` where `customer`.`cust_id` = ?"
+                  }
+                },
+                "output": true,
+                "meta": [
+                  {
+                    "type": "number",
+                    "name": "cust_id"
+                  },
+                  {
+                    "type": "text",
+                    "name": "cust_name"
+                  },
+                  {
+                    "type": "text",
+                    "name": "cust_num"
+                  },
+                  {
+                    "type": "text",
+                    "name": "cust_email"
+                  },
+                  {
+                    "type": "date",
+                    "name": "cust_dob"
+                  },
+                  {
+                    "type": "number",
+                    "name": "cust_loyalP"
+                  }
+                ],
+                "outputType": "object"
+              },
+              {
+                "name": "",
+                "module": "mail",
+                "action": "send",
+                "options": {
+                  "instance": "mail",
+                  "subject": "Your Points",
+                  "toName": "{{query1.cust_name}}",
+                  "toEmail": "{{query1.cust_email}}",
+                  "body": "You currently have {{query1.cust_loyalP}} points. You are able to redeem {{freeDrinks}}",
+                  "fromName": "noreply@xiadessert",
+                  "fromEmail": "eric.lim@triwind.net"
+                }
               }
             ]
           }

@@ -30,7 +30,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbar1_dropdown">
                             <a class="dropdown-item" href="/login" dmx-show="conn_account.data.identity < 1">Login</a>
-                            <a class="dropdown-item" dmx-on:click="run({'bootbox.confirm':{name:'logout',message:'Are you sure you want to logout',title:'Logout',buttons:{confirm:{label:'Logout'},cancel:{label:'Cancel',className:'btn-danger'}},then:{steps:[{serverConnect:{name:'sc',outputType:'object',url:'/api/registration/logout',site:'XiaD'}},{run:{name:'Logout',outputType:'text',action:browser1.goto(\'/admin_order\')}}]}}})" dmx-show="conn_account.data.identity > 0">Logout</a>
+                            <a class="dropdown-item" dmx-show="conn_account.data.identity &gt; 0" dmx-on:click="run({'bootbox.confirm':{name:'logout',message:'Are you sure you want to logout?',title:'Logout',buttons:{confirm:{label:'Logout'},cancel:{label:'Cancel',className:'btn-danger'}},then:{steps:[{serverConnect:{name:'sc',outputType:'object',url:'/api/registration/logout',site:'XiaD'}},{run:{name:'Logout',outputType:'text',action:`notifies1.success(\'Logout Success!\');browser1.goto(\'/login\')`}}]}}})">Logout</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">My Account</a>
                         </div>
