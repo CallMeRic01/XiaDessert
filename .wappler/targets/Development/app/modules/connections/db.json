@@ -10,10 +10,6 @@
       "user": "db_user",
       "password": "Xiad",
       "database": "xiad"
-    },
-    "meta": {}
-  },
-  "actionFilePath": "file:///D:/XiaD/app/modules/connections/db.json",
-  "serverType": "node",
-  "fileName": "db.json"
+    }
+  }
 }

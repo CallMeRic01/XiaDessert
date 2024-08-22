@@ -845,7 +845,12 @@
         "parent": "user"
       },
       "detailsOrder": {
-        "db": {},
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
         "columns": {
           "detOrd_id": {
             "db": {
