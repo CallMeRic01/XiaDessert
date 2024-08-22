@@ -7,9 +7,9 @@
     "connection": {
       "host": "db",
       "port": 3306,
-      "user": "db_user",
-      "password": "Xiad",
-      "database": "xiad"
+      "user": "admin",
+      "password": "mydatabase",
+      "database": "mydatabase"
     }
   }
 }

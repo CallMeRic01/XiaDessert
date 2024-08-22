@@ -1,14 +1,15 @@
 services:
   db:
     environment:
-      MYSQL_ROOT_PASSWORD: 'Xiad'
-      MYSQL_DATABASE: 'xiad'
-      MYSQL_USER: 'db_user'
-      MYSQL_PASSWORD: 'Xiad'
+      MYSQL_ROOT_PASSWORD: 'mydatabase'
+      MYSQL_DATABASE: 'mydatabase'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'mydatabase'
+      MYSQL_ROOT_HOST: '18.139.116.251'
     volumes:
       - 'db-volume:/var/lib/mysql'
     ports:
-      - '9907:3306'
+      - '3306:3306'
     restart: 'always'
     logging:
       options:
@@ -25,7 +26,7 @@ services:
     depends_on:
       - 'db'
     ports:
-      - '443:3000'
+      - '8080:3000'
     restart: 'always'
     stdin_open: true
     tty: true

@@ -4,9 +4,9 @@
   "connection": {
     "host": "18.139.116.251",
     "port": 9906,
-    "user": "db_user",
-    "password": "Xiad",
-    "database": "xiad"
+    "user": "admin",
+    "password": "mydatabase",
+    "database": "mydatabase"
   },
   "schema": {
     "tables": {
