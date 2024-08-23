@@ -1,0 +1,22 @@
+{
+  "type": "mysql2",
+  "connection": {
+    "host": "13.213.63.187",
+    "port": 3306,
+    "user": "admin",
+    "password": "mydatabase",
+    "database": "mydatabase",
+    "ssl": "Amazon RDS",
+    "ssh": {
+      "host": "18.141.11.113",
+      "port": "22",
+      "user": "xia1",
+      "key": "/xia1.pem"
+    }
+  },
+  "direct": true,
+  "schema": {
+    "tables": {},
+    "views": {}
+  }
+}

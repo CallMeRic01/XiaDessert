@@ -1,0 +1,16 @@
+{
+  "name": "cloud",
+  "module": "dbconnector",
+  "action": "connect",
+  "options": {
+    "client": "mysql2",
+    "connection": {
+      "host": "13.213.63.187",
+      "port": 3306,
+      "user": "admin",
+      "password": "mydatabase",
+      "database": "mydatabase",
+      "ssl": "Amazon RDS"
+    }
+  }
+}

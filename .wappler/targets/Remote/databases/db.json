@@ -2,7 +2,7 @@
   "direct": true,
   "type": "mysql2",
   "connection": {
-    "host": "18.139.116.251",
+    "host": "13.213.63.187",
     "port": 9906,
     "user": "admin",
     "password": "mydatabase",
