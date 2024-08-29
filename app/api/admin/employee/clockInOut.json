@@ -195,7 +195,7 @@
                       "action": "setvalue",
                       "options": {
                         "key": "g_clockIn",
-                        "value": "{{$_POST.cIO_in[$index]}}",
+                        "value": "{{$_POST.cIO_in[$index].formatDate('yyyy-MM-dd HH:mm:ss', false)}}",
                         "schema": []
                       },
                       "meta": [],
@@ -218,7 +218,7 @@
                       "action": "setvalue",
                       "options": {
                         "key": "g_clockOut",
-                        "value": "{{$_POST.cIO_out[$index]}}"
+                        "value": "{{$_POST.cIO_out[$index].formatDate('yyyy-MM-dd HH:mm:ss', false)}}"
                       },
                       "meta": [],
                       "outputType": "array"

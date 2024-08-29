@@ -16,14 +16,9 @@
     ],
     "$_POST": [
       {
-        "type": "number",
-        "fieldName": "cust_id",
-        "options": {
-          "rules": {
-            "core:number": {}
-          }
-        },
-        "name": "cust_id"
+        "type": "text",
+        "fieldName": "cust_id2",
+        "name": "cust_id2"
       },
       {
         "type": "text",
@@ -39,7 +34,7 @@
         "name": "pointsToRedeem"
       },
       {
-        "type": "text",
+        "type": "number",
         "fieldName": "pRedeemed",
         "options": {
           "rules": {
@@ -47,163 +42,224 @@
           }
         },
         "name": "pRedeemed"
+      },
+      {
+        "type": "text",
+        "fieldName": "cust_id",
+        "name": "cust_id"
       }
     ]
   },
   "exec": {
-    "steps": {
-      "name": "",
-      "module": "core",
-      "action": "condition",
-      "options": {
-        "if": "{{$_POST.cust_id}}",
-        "then": {
-          "steps": [
-            {
-              "name": "query_cust",
-              "module": "dbconnector",
-              "action": "single",
-              "options": {
-                "connection": "db",
-                "sql": {
-                  "type": "select",
-                  "columns": [
-                    {
-                      "table": "customer",
-                      "column": "cust_loyalP",
-                      "recid": 1
-                    }
-                  ],
-                  "params": [
-                    {
-                      "operator": "equal",
-                      "type": "expression",
-                      "name": ":P1",
-                      "value": "{{$_POST.cust_id}}",
-                      "test": "3"
-                    }
-                  ],
-                  "table": {
-                    "name": "customer"
-                  },
-                  "query": "select `cust_loyalP` from `customer` where `customer`.`cust_id` = ?",
-                  "primary": "cust_id",
-                  "joins": [],
-                  "wheres": {
-                    "condition": "AND",
-                    "rules": [
-                      {
-                        "id": "customer.cust_id",
-                        "field": "customer.cust_id",
-                        "type": "double",
-                        "operator": "equal",
-                        "value": "{{$_POST.cust_id}}",
-                        "data": {
-                          "table": "customer",
-                          "column": "cust_id",
-                          "type": "number",
-                          "columnObj": {
-                            "type": "increments",
-                            "primary": true,
-                            "nullable": false,
-                            "name": "cust_id"
-                          }
-                        },
-                        "operation": "=",
-                        "table": "customer"
-                      }
-                    ],
-                    "conditional": null,
-                    "valid": true
-                  },
-                  "orders": []
-                }
-              },
-              "output": true,
-              "outputType": "object",
-              "meta": [
+    "steps": [
+      {
+        "name": "query_cust",
+        "module": "dbconnector",
+        "action": "single",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "customer",
+                "column": "cust_loyalP",
+                "recid": 1
+              }
+            ],
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_POST.cust_id}}",
+                "test": "3"
+              }
+            ],
+            "table": {
+              "name": "customer"
+            },
+            "query": "select `cust_loyalP` from `customer` where `customer`.`cust_id` = ?",
+            "primary": "cust_id",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
                 {
-                  "type": "number",
-                  "name": "cust_loyalP"
+                  "id": "customer.cust_id",
+                  "field": "customer.cust_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_POST.cust_id}}",
+                  "data": {
+                    "table": "customer",
+                    "column": "cust_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "increments",
+                      "primary": true,
+                      "nullable": false,
+                      "name": "cust_id"
+                    }
+                  },
+                  "operation": "=",
+                  "table": "customer"
                 }
               ],
-              "type": "dbconnector_single"
+              "conditional": null,
+              "valid": true
             },
-            {
-              "name": "new_loyaltyP",
-              "module": "core",
-              "action": "setvalue",
-              "options": {
-                "key": "g_new_loyaltyP",
-                "value": "{{query_cust.cust_loyalP-($_POST.pointsToRedeem * 9)}}"
-              },
-              "meta": [
-                {
-                  "name": "cust_loyalP",
-                  "type": "number"
-                }
-              ],
-              "outputType": "number"
-            },
-            {
-              "name": "update",
-              "module": "dbupdater",
-              "action": "update",
-              "options": {
-                "connection": "db",
-                "sql": {
-                  "type": "update",
-                  "values": [
-                    {
-                      "table": "customer",
-                      "column": "cust_num",
-                      "type": "text",
-                      "value": "2"
-                    }
-                  ],
-                  "table": "customer",
-                  "wheres": {
-                    "condition": "AND",
-                    "rules": [
-                      {
-                        "id": "cust_id",
-                        "field": "cust_id",
-                        "type": "double",
-                        "operator": "equal",
-                        "value": "{{$_POST.cust_id}}",
-                        "data": {
-                          "column": "cust_id"
-                        },
-                        "operation": "="
-                      }
-                    ],
-                    "conditional": null,
-                    "valid": true
-                  },
-                  "returning": "cust_id",
-                  "query": "update `customer` set `cust_num` = ? where `cust_id` = ?",
-                  "params": [
-                    {
-                      "operator": "equal",
-                      "type": "expression",
-                      "name": ":P1",
-                      "value": "{{$_POST.cust_id}}",
-                      "test": ""
-                    }
-                  ]
-                }
-              },
-              "meta": [
-                {
-                  "name": "affected",
-                  "type": "number"
-                }
-              ]
-            }
-          ]
-        }
+            "orders": []
+          }
+        },
+        "output": true,
+        "outputType": "object",
+        "meta": [
+          {
+            "type": "number",
+            "name": "cust_loyalP"
+          }
+        ],
+        "type": "dbconnector_single"
       },
-      "outputType": "boolean"
-    }
+      {
+        "name": "query",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "customer",
+                "column": "cust_loyalP"
+              }
+            ],
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_POST.cust_id}}",
+                "test": "1"
+              }
+            ],
+            "table": {
+              "name": "customer"
+            },
+            "primary": "cust_id",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "customer.cust_id",
+                  "field": "customer.cust_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_POST.cust_id}}",
+                  "data": {
+                    "table": "customer",
+                    "column": "cust_id",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "increments",
+                      "primary": true,
+                      "nullable": false,
+                      "name": "cust_id"
+                    }
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "select `cust_loyalP` from `customer` where `customer`.`cust_id` = ?"
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "cust_loyalP"
+          }
+        ],
+        "outputType": "array"
+      },
+      {
+        "name": "new_loyaltyP",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "key": "g_new_loyaltyP",
+          "value": "{{query[0].cust_loyalP-($_POST.pointsToRedeem * 9)}}"
+        },
+        "meta": [
+          {
+            "name": "cust_loyalP",
+            "type": "number"
+          }
+        ],
+        "outputType": "number",
+        "output": true
+      },
+      {
+        "name": "update",
+        "module": "dbupdater",
+        "action": "update",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "update",
+            "values": [
+              {
+                "table": "customer",
+                "column": "cust_name",
+                "type": "text",
+                "value": "abcert"
+              }
+            ],
+            "table": "customer",
+            "returning": "cust_id",
+            "query": "update `customer` set `cust_name` = ? where `cust_id` = ?",
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{$_POST.cust_id}}",
+                "test": ""
+              }
+            ],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "cust_id",
+                  "field": "cust_id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{$_POST.cust_id}}",
+                  "data": {
+                    "column": "cust_id"
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            }
+          }
+        },
+        "meta": [
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      }
+    ]
   }
 }

@@ -45,7 +45,9 @@
 
         <div class="col-md-6">
             <h3 class="mt-3 visually-hidden">Cart</h3>
-            <form method="post" action="/api/admin/order/createOrder" dmx-on:success="notifies1.success('Order added successfully');serverconnectform1.reset();cart.clear();conn_pullProduct.load({});conn_customerList.load({})" dmx-on:error="notifies1.danger('Failed to submit order')" is="dmx-serverconnect-form" id="serverconnectform1">
+            <form method="post" action="/api/admin/order/createOrder" dmx-on:success="notifies1.success('Order added successfully');         serverconnectform1.reset();        cart.clear();        conn_pullProduct.load({});        conn_customerList.load({})" dmx-on:error="notifies1.danger('Failed to submit order')" is="dmx-serverconnect-form" id="serverconnectform1">
+
+
                 <div class="row">
                     <div class="col-md-6 visually-hidden">
                         <div class="table-responsive">
@@ -99,7 +101,7 @@
                             <div class="col-2">
                                 <button id="AddCust" class="btn text-bg-primary" dmx-on:click="CustomerReg.show()"><i class="fas fa-user-plus"></i></button>
                             </div>
-                            <p><b>Loyalty Points: {{conn_customerList.data.query.where('cust_id', CustomerSelect.value).values('cust_loyalP')[0]}}</b><button id="btn4" class="btn text-bg-success mt-2 ms-4" dmx-on:click="pointsRedeem.MemberPointsRedeem.show()">Redeem Points</button></p>
+                            <p><b>Loyalty Points: {{conn_customerList.data.query.where('cust_id', CustomerSelect.value).values('cust_loyalP')[0]}}</b><button id="btn4" class="btn text-bg-success mt-2 ms-4 visually-hidden" dmx-on:click="pointsRedeem.MemberPointsRedeem.show()">Redeem Points</button></p>
 
                         </div>
 
@@ -271,7 +273,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Customer Name: {{serverconnectform1.CustomerSelect.selectedText}}</h5>
-                            <input id="customerRdpID" name="cust_id" type="number" class="form-control" dmx-bind:value="serverconnectform1.CustomerSelect.value">
+                            <input id="customerRdpID" name="cust_id2" type="hidden" class="form-control" dmx-bind:value="serverconnectform1.CustomerSelect.value">
+                            <select id="select1" class="form-select" dmx-bind:options="conn_customerList.data.query" optiontext="cust_name" optionvalue="cust_id" name="cust_id">
+                                <option selected="" value="1">Option One</option>
+                            </select>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -279,7 +284,7 @@
                             <p>Able to redeem: {{((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()}}</p>
                             <div class="row">
                                 <div class="col">
-                                    <input id="pointsRedem" name="pointsToRedeem" type="range" class="form-control" dmx-bind:value="((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()" dmx-bind:max="((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()" min="1">
+                                    <input id="pointsRedem" name="pointsToRedeem" type="range" class="form-control" dmx-bind:value="((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()" dmx-bind:max="((conn_customerList.data.query.where('cust_id', serverconnectform1.CustomerSelect.value).values('cust_loyalP')[0])/9).floor()" min="1" value="1">
                                 </div>
                                 <div class="col-2">
                                     <input id="pointsRdp" name="pRedeemed" type="number" class="form-control" dmx-bind:value="pointsRedem.value">
@@ -294,6 +299,7 @@
                 </div>
             </div>
         </form>
+
 
 
     </div>

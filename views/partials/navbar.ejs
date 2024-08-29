@@ -56,9 +56,9 @@
 
                     <div class="mt-3">
                         <!-- Clock In Button -->
-                        <button class="btn btn-primary" id="clockInBtn" dmx-show="!clockInStore.data.where('user_id', select1.value).where('clockInTime.formatDate(&quot;yyyy-MM-dd&quot;)', currentTime.datetime.formatDate(&quot;yyyy-MM-dd&quot;)).hasItems()" dmx-on:click="clockInStore.upsert({user_id: select1.value},{clockedIn: true, clockInTime: currentTime.datetime.formatDate('yyyy-MM-dd hh:mm'), user_id: select1.value})">Clock In</button>
+                        <button class="btn btn-primary" id="clockInBtn" dmx-show="!clockInStore.data.where('user_id', select1.value).where('clockInTime.formatDate(&quot;yyyy-MM-dd&quot;)', currentTime.datetime.formatDate(&quot;yyyy-MM-dd&quot;)).hasItems()" dmx-on:click="clockInStore.upsert({user_id: select1.value},{clockedIn: true, clockInTime: currentTime.datetime.formatDate('yyyy-MM-dd HH:mm:ss'), user_id: select1.value})">Clock In</button>
                         <!-- Clock Out Button -->
-                        <button class="btn btn-danger" id="clockOutBtn" dmx-show="clockInStore.data.where('user_id', select1.value).where('clockInTime.formatDate(&quot;yyyy-MM-dd&quot;)', currentTime.datetime.formatDate(&quot;yyyy-MM-dd&quot;)).hasItems()" dmx-on:click="clockInStore.update({user_id: select1.value},{clockOutTime: currentTime.datetime})">Clock Out</button>
+                        <button class="btn btn-danger" id="clockOutBtn" dmx-show="clockInStore.data.where('user_id', select1.value).where('clockInTime.formatDate(&quot;yyyy-MM-dd&quot;)', currentTime.datetime.formatDate(&quot;yyyy-MM-dd&quot;)).hasItems()" dmx-on:click="clockInStore.update({user_id: select1.value},{clockOutTime: currentTime.datetime.formatDate('yyyy-MM-dd HH:mm:ss')})">Clock Out</button>
                     </div>
 
 
@@ -70,7 +70,7 @@
                                         <th>ID</th>
                                         <th>User</th>
                                         <th>Clock in time</th>
-                                        <th scope="row">Header</th>
+                                        <th scope="row"></th>
                                         <th>Clock out time</th>
                                     </tr>
                                 </thead>
@@ -78,13 +78,13 @@
                                     <tr>
                                         <td dmx-text="$id"></td>
                                         <td dmx-text="user_id"></td>
-                                        <td dmx-text="clockInTime.formatDate('yyyy-MM-dd HH:mm')"></td>
+                                        <td dmx-text="clockInTime.formatDate('yyyy-MM-dd HH:mm:ss')"></td>
                                         <td>
                                             <input id="cIO_in{{$index}}" name="cIO_in[]" class="form-control" dmx-bind:value="clockInTime.formatDate('yyyy-MM-dd H:mm')" type="hidden">
                                             <input id="users_id{{$index}}" name="user_id[]" class="form-control" dmx-bind:value="user_id" type="hidden">
                                             <input id="cIO_out{{$index}}" name="cIO_out[]" class="form-control" dmx-bind:value="clockOutTime.formatDate('yyyy-MM-dd HH:mm')" type="hidden">
                                         </td>
-                                        <td dmx-text="clockOutTime.formatDate('yyyy-MM-dd hh:mm')"></td>
+                                        <td dmx-text="clockOutTime.formatDate('yyyy-MM-dd HH:mm:ss')"></td>
                                     </tr>
                                 </tbody>
                             </table>
