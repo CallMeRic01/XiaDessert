@@ -749,7 +749,8 @@
                     "name": "cust_loyalP"
                   }
                 ],
-                "outputType": "object"
+                "outputType": "object",
+                "type": "dbconnector_single"
               },
               {
                 "name": "total_quantity",
@@ -927,8 +928,7 @@
                     "type": "number"
                   }
                 ],
-                "output": true,
-                "disabled": true
+                "output": true
               },
               {
                 "name": "",
@@ -1070,7 +1070,8 @@
                     }
                   }
                 },
-                "outputType": "boolean"
+                "outputType": "boolean",
+                "disabled": true
               },
               {
                 "name": "query1",

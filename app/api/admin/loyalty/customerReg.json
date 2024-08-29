@@ -4,6 +4,16 @@
       "linkedFile": "/views/admin_order.ejs",
       "linkedForm": "CustReg"
     },
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ],
     "$_POST": [
       {
         "type": "text",
