@@ -282,6 +282,194 @@
           "exec": {
             "steps": [
               {
+                "name": "",
+                "module": "core",
+                "action": "condition",
+                "options": {
+                  "if": "{{$_POST.cust_id}}",
+                  "then": {
+                    "steps": {
+                      "name": "insertDetails_copy1",
+                      "module": "dbupdater",
+                      "action": "insert",
+                      "options": {
+                        "connection": "db",
+                        "sql": {
+                          "type": "insert",
+                          "values": [
+                            {
+                              "table": "detailsOrder",
+                              "column": "ord_id",
+                              "type": "number",
+                              "value": "{{insertOrder.identity}}",
+                              "recid": 1
+                            },
+                            {
+                              "table": "detailsOrder",
+                              "column": "pro_id",
+                              "type": "number",
+                              "value": "{{$_POST.pro_id[$index]}}",
+                              "recid": 2
+                            },
+                            {
+                              "table": "detailsOrder",
+                              "column": "detOrd_quantity",
+                              "type": "number",
+                              "value": "{{$_POST.detOrd_quantity[$index]}}",
+                              "recid": 3
+                            },
+                            {
+                              "table": "detailsOrder",
+                              "column": "detOrd_date",
+                              "type": "datetime",
+                              "value": "{{$_POST.detOrd_date}}",
+                              "recid": 4
+                            },
+                            {
+                              "table": "detailsOrder",
+                              "column": "cust_id",
+                              "type": "number",
+                              "value": "{{$_POST.cust_id}}",
+                              "recid": 5
+                            }
+                          ],
+                          "table": "detailsOrder",
+                          "returning": "detOrd_id",
+                          "query": "insert into `detailsOrder` (`cust_id`, `detOrd_date`, `detOrd_quantity`, `ord_id`, `pro_id`) values (?, ?, ?, ?, ?)",
+                          "params": [
+                            {
+                              "name": ":P1",
+                              "type": "expression",
+                              "value": "{{insertOrder.identity}}",
+                              "test": ""
+                            },
+                            {
+                              "name": ":P2",
+                              "type": "expression",
+                              "value": "{{$_POST.pro_id[$index]}}",
+                              "test": ""
+                            },
+                            {
+                              "name": ":P3",
+                              "type": "expression",
+                              "value": "{{$_POST.detOrd_quantity[$index]}}",
+                              "test": ""
+                            },
+                            {
+                              "name": ":P4",
+                              "type": "expression",
+                              "value": "{{$_POST.detOrd_date}}",
+                              "test": ""
+                            },
+                            {
+                              "name": ":P5",
+                              "type": "expression",
+                              "value": "{{$_POST.cust_id}}",
+                              "test": ""
+                            }
+                          ]
+                        }
+                      },
+                      "meta": [
+                        {
+                          "name": "identity",
+                          "type": "text"
+                        },
+                        {
+                          "name": "affected",
+                          "type": "number"
+                        }
+                      ],
+                      "output": true
+                    }
+                  },
+                  "else": {
+                    "steps": {
+                      "name": "insertDetails_copy",
+                      "module": "dbupdater",
+                      "action": "insert",
+                      "options": {
+                        "connection": "db",
+                        "sql": {
+                          "type": "insert",
+                          "values": [
+                            {
+                              "table": "detailsOrder",
+                              "column": "ord_id",
+                              "type": "number",
+                              "value": "{{insertOrder.identity}}",
+                              "recid": 1
+                            },
+                            {
+                              "table": "detailsOrder",
+                              "column": "pro_id",
+                              "type": "number",
+                              "value": "{{$_POST.pro_id[$index]}}",
+                              "recid": 2
+                            },
+                            {
+                              "table": "detailsOrder",
+                              "column": "detOrd_quantity",
+                              "type": "number",
+                              "value": "{{$_POST.detOrd_quantity[$index]}}",
+                              "recid": 3
+                            },
+                            {
+                              "table": "detailsOrder",
+                              "column": "detOrd_date",
+                              "type": "datetime",
+                              "value": "{{$_POST.detOrd_date}}",
+                              "recid": 4
+                            }
+                          ],
+                          "table": "detailsOrder",
+                          "returning": "detOrd_id",
+                          "query": "insert into `detailsOrder` (`detOrd_date`, `detOrd_quantity`, `ord_id`, `pro_id`) values (?, ?, ?, ?)",
+                          "params": [
+                            {
+                              "name": ":P1",
+                              "type": "expression",
+                              "value": "{{insertOrder.identity}}",
+                              "test": ""
+                            },
+                            {
+                              "name": ":P2",
+                              "type": "expression",
+                              "value": "{{$_POST.pro_id[$index]}}",
+                              "test": ""
+                            },
+                            {
+                              "name": ":P3",
+                              "type": "expression",
+                              "value": "{{$_POST.detOrd_quantity[$index]}}",
+                              "test": ""
+                            },
+                            {
+                              "name": ":P4",
+                              "type": "expression",
+                              "value": "{{$_POST.detOrd_date}}",
+                              "test": ""
+                            }
+                          ]
+                        }
+                      },
+                      "meta": [
+                        {
+                          "name": "identity",
+                          "type": "text"
+                        },
+                        {
+                          "name": "affected",
+                          "type": "number"
+                        }
+                      ],
+                      "output": true
+                    }
+                  }
+                },
+                "outputType": "boolean"
+              },
+              {
                 "name": "validate",
                 "module": "validator",
                 "action": "validate",
@@ -294,7 +482,8 @@
                       "fieldName": "detOrd_quantity[]"
                     }
                   ]
-                }
+                },
+                "disabled": true
               },
               {
                 "name": "insertDetails",
@@ -375,7 +564,8 @@
                     "type": "number"
                   }
                 ],
-                "output": true
+                "output": true,
+                "disabled": true
               }
             ]
           }

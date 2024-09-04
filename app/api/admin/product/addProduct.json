@@ -90,7 +90,8 @@
                     "connection": "db",
                     "table": "product",
                     "column": "pro_name"
-                  }
+                  },
+                  "message": "Product already exists in database."
                 }
               },
               "fieldName": "name"
@@ -156,7 +157,8 @@
             "name": "height",
             "type": "number"
           }
-        ]
+        ],
+        "disabled": true
       },
       {
         "name": "",
@@ -165,7 +167,8 @@
         "options": {
           "instance": "image",
           "width": 640
-        }
+        },
+        "disabled": true
       },
       {
         "name": "newImage",
@@ -176,7 +179,8 @@
           "path": "/public/uploads/proImage/{{$_POST.pro_id}}/full",
           "quality": ""
         },
-        "output": true
+        "output": true,
+        "disabled": true
       },
       {
         "name": "",
@@ -186,7 +190,8 @@
           "instance": "image",
           "width": 160,
           "height": 80
-        }
+        },
+        "disabled": true
       },
       {
         "name": "newImage_copy",
@@ -196,7 +201,8 @@
           "instance": "image",
           "path": "/public/uploads/proImage/{{$_POST.pro_id}}/cover"
         },
-        "output": true
+        "output": true,
+        "disabled": true
       },
       {
         "name": "insert",
@@ -211,37 +217,43 @@
                 "table": "product",
                 "column": "pro_name",
                 "type": "text",
-                "value": "{{$_POST.pro_name}}"
+                "value": "{{$_POST.pro_name}}",
+                "recid": 1
               },
               {
                 "table": "product",
                 "column": "pro_price",
                 "type": "number",
-                "value": "{{$_POST.pro_price}}"
+                "value": "{{$_POST.pro_price}}",
+                "recid": 2
               },
               {
                 "table": "product",
                 "column": "pro_desc",
                 "type": "text",
-                "value": "{{$_POST.pro_desc}}"
+                "value": "{{$_POST.pro_desc}}",
+                "recid": 3
               },
               {
                 "table": "product",
                 "column": "pro_stat",
                 "type": "boolean",
-                "value": "{{$_POST.pro_stat}}"
+                "value": "{{$_POST.pro_stat}}",
+                "recid": 4
               },
               {
                 "table": "product",
                 "column": "pro_stock",
                 "type": "number",
-                "value": "{{$_POST.pro_stock}}"
+                "value": "{{$_POST.pro_stock}}",
+                "recid": 5
               },
               {
                 "table": "product",
                 "column": "pro_image",
                 "type": "text",
-                "value": "{{upload.name}}"
+                "value": "{{upload.name}}",
+                "recid": 6
               }
             ],
             "table": "product",
@@ -298,6 +310,47 @@
           }
         ],
         "output": true
+      },
+      {
+        "name": "insert1",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "product",
+                "column": "pro_stat",
+                "type": "boolean",
+                "value": "{{$_POST.pro_stat}}"
+              }
+            ],
+            "table": "product",
+            "returning": "pro_id",
+            "query": "insert into `product` (`pro_stat`) values (?)",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{$_POST.pro_stat}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ],
+        "disabled": true
       }
     ]
   },

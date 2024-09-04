@@ -45,6 +45,112 @@
 }
 /**********************************************************************/
 
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Card Styles */
+.small-card {
+    width: 100%;
+    max-width: 200px;
+    margin: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.small-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.small-card img {
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.small-card:hover img {
+    transform: scale(1.1);
+}
+
+.small-card .card-body {
+    padding: 15px;
+}
+
+.small-card .btn {
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* Button Styles */
+.btn-primary, .style3 {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .style3:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    transform: translateY(-2px);
+}
+
+/* Table Styles */
+.table {
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    padding: 12px;
+}
+
+.table thead th {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+}
+
+/* Form Styles */
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #ffffff;
+    border-bottom: none;
+}
+
 /* Card hover effect */
 .card.small-card {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -159,9 +265,11 @@ button:hover {
     margin: 20px 0;
 }
 
-/* Add this to your CSS file (e.g., /css/style.css) */
+/* Flex container for responsive layout */
 .container-flex {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .scrollable-section {
@@ -207,7 +315,7 @@ button:hover {
 
 .product-list-scroll .col-6 {
     flex: 0 0 auto;
-    width: 50%;
+    width: 100%; /* Set to 100% for mobile devices */
 }
 
 .product-list-scroll .col-md-4 {
@@ -215,148 +323,12 @@ button:hover {
     width: 33.3333%;
 }
 
+/* Divider styles */
 .divider {
-    
-    width:50%;
+    width: 50%;
     height: 2px;
     background-color: #ccc; /* Change color as needed */
-    margin: 10px auto; /* Adjust spacing as needed */
-
-/* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    transition: background-color 0.3s ease;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Card Styles */
-.small-card {
-    width: 100%;
-    max-width: 200px;
-    margin: 15px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #ffffff;
-}
-
-.small-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-.small-card img {
-    height: 120px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.small-card:hover img {
-    transform: scale(1.1);
-}
-
-.small-card .card-body {
-    padding: 15px;
-}
-
-.small-card .btn {
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-/* Button Styles */
-.btn-primary, .style3 {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #ffffff;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover, .style3:hover {
-    background-color: #0056b3;
-    border-color: #004085;
-    transform: translateY(-2px);
-}
-
-/* Table Styles */
-.table {
-    background-color: #ffffff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.table th, .table td {
-    vertical-align: middle;
-    padding: 12px;
-}
-
-.table thead th {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-}
-
-/* Form Styles */
-.form-control, .form-select {
-    border-radius: 10px;
-    border: 1px solid #ced4da;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-control:focus, .form-select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-/* Modal Styles */
-.modal-content {
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.modal-header {
-    background-color: #007bff;
-    color: #ffffff;
-    border-bottom: none;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    animation: fadeInUp 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.slide-in {
-    animation: slideIn 0.5s ease-out;
+    margin: 10px auto;
 }
 
 /* Responsive Design */
@@ -364,79 +336,40 @@ body {
     .small-card {
         max-width: 100%;
     }
-}
 
-
-/* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.navbar-nav .nav-link {
-    font-size: 1rem;
-    color: #333;
-    transition: color 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #007bff;
-}
-
-.navbar-nav .active {
-    color: #007bff;
-    font-weight: bold;
-}
-
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler:focus {
-    outline: none;
-}
-
-.dropdown-menu {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-item {
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-item:hover {
-    background-color: #f8f9fa;
-}
-
-.alert {
-    border-radius: 10px;
-}
-
-.alert p {
-    margin: 0;
-}
-
-/* Animations */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
+    .product-list-scroll .col-6,
+    .product-list-scroll .col-md-4 {
+        width: 100%;
+        flex: 0 0 100%;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .container-flex {
+        flex-direction: column;
+        padding: 15px;
     }
 }
 
-.fade-in-down {
-    animation: fadeInDown 0.5s ease-in-out;
+@media (max-width: 480px) {
+    .btn {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
 }
+
+@media (min-width: 992px) {
+    .container-flex {
+        flex-direction: row;
+    }
+
+    .product-list-scroll .col-6 {
+        width: 50%;
+    }
+
+    .product-list-scroll .col-md-4 {
+        width: 33.3333%;
+    }
+}
+
 
 /* Navbar Styles */
 .navbar {
@@ -444,7 +377,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-
 
 /* General Styles */
 #admin_product {
@@ -498,10 +430,7 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-
-
-
-/* General Styles */
+/* Admin Add Product Styles */
 #admin_addProduct {
     font-family: 'Roboto', sans-serif;
 }
@@ -572,7 +501,7 @@ body {
     border-radius: 15px;
 }
 
-/* Animations */
+/* Admin Add Product Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -596,6 +525,7 @@ body {
     padding: 2em;
     margin-top: 2em;
 }
+
 
 
 

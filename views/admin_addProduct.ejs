@@ -2,7 +2,7 @@
 <meta name="ac:route" content="/admin_addProduct">
 <dmx-notifications id="notifies1"></dmx-notifications>
 <div is="dmx-browser" id="browser1"></div>
-<dmx-serverconnect id="serverconnect1" url="/api/admin/product/addProduct"></dmx-serverconnect>
+<dmx-serverconnect id="serverconnect1" url="/api/admin/product/addProduct" noload="true"></dmx-serverconnect>
 <%- await include('/partials/navbar', Object.assign({}, locals)) %>
 <link rel="stylesheet" href="/css/style.css">
 

@@ -24,7 +24,8 @@
       "path": "/",
       "page": "index",
       "routeType": "page",
-      "layout": "main"
+      "layout": "main",
+      "exec": "/api/security/isAdmin"
     },
     {
       "path": "/admin_dashboard",

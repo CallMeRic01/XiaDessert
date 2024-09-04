@@ -46,5 +46,37 @@ dmx.config({
         "name": "clockOutTime"
       }
     ]
+  },
+  "admin_dashboard": {
+    "query": [
+      {
+        "type": "text",
+        "name": "offset"
+      }
+    ]
+  },
+  "admin_order": {
+    "cart": [
+      {
+        "type": "number",
+        "name": "pro_id"
+      },
+      {
+        "type": "text",
+        "name": "pro_name"
+      },
+      {
+        "type": "number",
+        "name": "pro_price"
+      },
+      {
+        "type": "number",
+        "name": "detOrd_quantity"
+      },
+      {
+        "type": "number",
+        "name": "pro_stock"
+      }
+    ]
   }
 });

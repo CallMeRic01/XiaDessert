@@ -1,0 +1,233 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "ord_id"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "viewOrderDetails",
+        "module": "dbupdater",
+        "action": "custom",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "query": "SELECT \n    `product`.`pro_name`, \n    `product`.`pro_price`, \n    `detailsOrder`.`ord_id`, \n    `detailsOrder`.`pro_id`, \n    `detailsOrder`.`detOrd_quantity`, \n    `detailsOrder`.`detOrd_date`, \n    `detailsOrder`.`cust_id`\nFROM \n    `detailsOrder`\nINNER JOIN \n    `product` \nON \n    `product`.`pro_id` = `detailsOrder`.`pro_id`\nWHERE \n    DATE(`detailsOrder`.`detOrd_date`) = CURDATE();\n",
+            "params": [
+              {
+                "name": ":P1",
+                "value": "{{NOW.CURDATE()}}",
+                "test": "2024-9-3",
+                "recid": 1
+              }
+            ]
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "name": "pro_name",
+            "type": "text"
+          },
+          {
+            "name": "pro_price",
+            "type": "text"
+          },
+          {
+            "name": "ord_id",
+            "type": "number"
+          },
+          {
+            "name": "pro_id",
+            "type": "number"
+          },
+          {
+            "name": "detOrd_quantity",
+            "type": "number"
+          },
+          {
+            "name": "detOrd_date",
+            "type": "datetime"
+          },
+          {
+            "name": "cust_id",
+            "type": "number"
+          }
+        ],
+        "type": "dbcustom_query"
+      },
+      {
+        "name": "OrderList",
+        "module": "dbupdater",
+        "action": "custom",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "query": "SELECT \n    `order`.`ord_id`, \n    `order`.`ord_date`, \n    COUNT(`detailsOrder`.`pro_id`) AS `item_count`,\n    `order`.`ord_totalAmount`\nFROM \n    `order`\nINNER JOIN \n    `detailsOrder` \nON \n    `detailsOrder`.`ord_id` = `order`.`ord_id`\nWHERE \n    DATE(`detailsOrder`.`detOrd_date`) = CURDATE()\nGROUP BY \n    `order`.`ord_id`, \n    `order`.`ord_date`;\n",
+            "params": []
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "name": "ord_id",
+            "type": "number"
+          },
+          {
+            "name": "ord_date",
+            "type": "datetime"
+          },
+          {
+            "name": "item_count",
+            "type": "text"
+          },
+          {
+            "name": "ord_totalAmount",
+            "type": "text"
+          }
+        ],
+        "type": "dbcustom_query",
+        "disabled": true
+      },
+      {
+        "name": "query",
+        "module": "dbconnector",
+        "action": "select",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "order",
+                "column": "ord_id",
+                "recid": 1
+              },
+              {
+                "table": "order",
+                "column": "ord_date",
+                "recid": 2
+              },
+              {
+                "table": "detailsOrder",
+                "column": "pro_id",
+                "alias": "item_count",
+                "aggregate": "COUNT",
+                "recid": 3
+              },
+              {
+                "table": "order",
+                "column": "ord_totalAmount",
+                "recid": 4
+              }
+            ],
+            "params": [],
+            "table": {
+              "name": "order"
+            },
+            "primary": "ord_id",
+            "joins": [
+              {
+                "table": "detailsOrder",
+                "column": "*",
+                "type": "INNER",
+                "clauses": {
+                  "condition": "AND",
+                  "rules": [
+                    {
+                      "table": "detailsOrder",
+                      "column": "pro_id",
+                      "operator": "equal",
+                      "operation": "=",
+                      "value": {
+                        "table": "order",
+                        "column": "pro_id"
+                      }
+                    }
+                  ]
+                },
+                "primary": "detOrd_id"
+              }
+            ],
+            "groupBy": [
+              {
+                "table": "order",
+                "column": "ord_id"
+              },
+              {
+                "table": "order",
+                "column": "ord_date"
+              },
+              {
+                "table": "order",
+                "column": "ord_totalAmount"
+              }
+            ],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "order.ord_date",
+                  "field": "order.ord_date",
+                  "type": "datetime",
+                  "operator": "equal",
+                  "value": "CURDATE()",
+                  "data": {
+                    "table": "order",
+                    "column": "ord_date",
+                    "type": "datetime",
+                    "columnObj": {
+                      "type": "datetime",
+                      "primary": false,
+                      "nullable": true,
+                      "default": "knex.fn.now()",
+                      "name": "ord_date"
+                    }
+                  },
+                  "operation": "=",
+                  "table": "order"
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "orders": [],
+            "query": "select `order`.`ord_id`, `order`.`ord_date`, count(`detailsOrder`.`pro_id`) as `item_count`, `order`.`ord_totalAmount` from `order` inner join `detailsOrder` on `detailsOrder`.`pro_id` = `order`.`pro_id` where `order`.`ord_date` = ? group by `order`.`ord_id`, `order`.`ord_date`, `order`.`ord_totalAmount`"
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "type": "number",
+            "name": "ord_id"
+          },
+          {
+            "type": "datetime",
+            "name": "ord_date"
+          },
+          {
+            "type": "number",
+            "name": "item_count"
+          },
+          {
+            "type": "number",
+            "name": "ord_totalAmount"
+          }
+        ],
+        "outputType": "array"
+      }
+    ]
+  }
+}
