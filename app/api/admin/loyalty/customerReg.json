@@ -81,25 +81,29 @@
                 "table": "customer",
                 "column": "cust_name",
                 "type": "text",
-                "value": "{{$_POST.cust_name}}"
+                "value": "{{$_POST.cust_name}}",
+                "recid": 1
               },
               {
                 "table": "customer",
                 "column": "cust_num",
                 "type": "text",
-                "value": "{{$_POST.cust_num}}"
+                "value": "{{$_POST.cust_num}}",
+                "recid": 2
               },
               {
                 "table": "customer",
                 "column": "cust_email",
                 "type": "text",
-                "value": "{{$_POST.cust_email}}"
+                "value": "{{$_POST.cust_email}}",
+                "recid": 3
               },
               {
                 "table": "customer",
                 "column": "cust_dob",
                 "type": "date",
-                "value": "{{$_POST.cust_dob}}"
+                "value": "{{$_POST.cust_dob}}",
+                "recid": 4
               }
             ],
             "table": "customer",
