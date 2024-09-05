@@ -34,7 +34,7 @@
       "targetType": "docker",
       "webServer": "node",
       "NodeVersion": "18",
-      "NodeOS": "bullseye",
+      "NodeOS": "debian",
       "NodeImageType": "slim",
       "webLoggingMaxFiles": "5",
       "webLoggingMaxFileSize": "10m",

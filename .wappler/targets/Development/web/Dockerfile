@@ -1,4 +1,4 @@
-FROM node:18-bullseye-slim
+FROM node:18
 
 RUN apt-get update; apt-get -y install fontconfig
 COPY ./fonts /usr/shared/fonts
