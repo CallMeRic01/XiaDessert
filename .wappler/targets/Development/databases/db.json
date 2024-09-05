@@ -10,6 +10,102 @@
   },
   "schema": {
     "tables": {
+      "branch": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "br_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "br_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "br_loc": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "br_num": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "refs": {
+          "salesReport": "br_id"
+        }
+      },
+      "crm": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "crm_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "cus_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "cust_id",
+              "inTable": "customer",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "crm_interDate": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "crm_interType": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "crm_note": {
+            "db": {
+              "type": "text",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
       "customer": {
         "columns": {
           "cust_id": {
@@ -63,6 +159,352 @@
           "schema": "xiad",
           "collation": "utf8mb4_unicode_ci",
           "system_versioned": false
+        },
+        "refs": {
+          "crm": "cus_id",
+          "detailsOrder": "cust_id",
+          "order": "cust_id"
+        }
+      },
+      "delivery": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "del_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "del_regName": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "del_fee": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
+      "detailsOrder": {
+        "columns": {
+          "detOrd_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "ord_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "ord_id",
+              "inTable": "order",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "pro_id": {
+            "db_edits": {
+              "name": "pro_id",
+              "default": "",
+              "maxLength": ""
+            },
+            "status": {
+              "new": true
+            },
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "pro_id",
+              "inTable": "product",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "detOrd_quantity": {
+            "db_edits": {
+              "name": "detOrd_quantity",
+              "maxLength": ""
+            },
+            "status": {
+              "new": true
+            },
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "detOrd_date": {
+            "db_edits": {
+              "name": "detOrd_date",
+              "maxLength": ""
+            },
+            "status": {
+              "new": true
+            },
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cust_id": {
+            "db_edits": {
+              "name": "cust_id"
+            },
+            "status": {
+              "new": true
+            },
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "cust_id",
+              "inTable": "customer",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        },
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        }
+      },
+      "ingredient": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "ingre_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "ingre_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ingre_price": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
+      "order": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "ord_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "cust_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "cust_id",
+              "inTable": "customer",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "ord_date": {
+            "db": {
+              "type": "datetime",
+              "default": "knex.fn.now()",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_totalAmount": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_payMethod": {
+            "db": {
+              "type": "enum",
+              "enumValues": [
+                "Cash",
+                "TnG",
+                "Grab"
+              ],
+              "maxLength": 4,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_dis": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_delFee": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_promoCode": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_stat": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_isTA": {
+            "db": {
+              "type": "boolean",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_paidCash": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "ord_changeAmount": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pro_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "pro_id",
+              "inTable": "product",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "ord_quantity": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "refs": {
+          "detailsOrder": "ord_id",
+          "payment": "ord_id"
+        }
+      },
+      "payment": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "pay_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "ord_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "ord_id",
+              "inTable": "order",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "pay_paid": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pay_change": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pay_method": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          }
         }
       },
       "product": {
@@ -89,14 +531,6 @@
               "nullable": true
             }
           },
-          "pro_image": {
-            "db": {
-              "type": "string",
-              "maxLength": 255,
-              "primary": false,
-              "nullable": true
-            }
-          },
           "pro_desc": {
             "db": {
               "type": "text",
@@ -111,6 +545,21 @@
               "primary": false,
               "nullable": true
             }
+          },
+          "pro_stock": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pro_image": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
           }
         },
         "db": {
@@ -118,95 +567,63 @@
           "schema": "xiad",
           "collation": "utf8mb4_unicode_ci",
           "system_versioned": false
+        },
+        "refs": {
+          "detailsOrder": "pro_id",
+          "order": "pro_id"
+        },
+        "sub": {
+          "productByDay": "pro_id"
         }
       },
-      "detailsOrder": {
+      "productByDay": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
         "columns": {
-          "detOrd_id": {
+          "pd_id": {
             "db": {
               "type": "increments",
               "primary": true,
               "nullable": false
             }
           },
-          "ord_id": {
+          "pd_day": {
             "db": {
-              "type": "integer",
+              "type": "enum",
+              "enumValues": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "maxLength": 9,
               "primary": false,
               "nullable": true
             }
           },
           "pro_id": {
-            "db_edits": {
+            "db": {
               "type": "reference",
-              "name": "pro_id",
-              "default": "",
-              "maxLength": "",
+              "primary": false,
+              "nullable": true,
+              "references": "pro_id",
               "inTable": "product",
-              "references": "pro_id"
-            },
-            "status": {
-              "new": true
-            },
-            "db": {
-              "type": "integer",
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "cust_id": {
-            "db_edits": {
-              "type": "reference",
-              "name": "cust_id",
-              "inTable": "customer",
-              "references": "cust_id"
-            },
-            "status": {
-              "new": true
-            },
-            "db": {
-              "type": "integer",
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "detOrd_quantity": {
-            "db_edits": {
-              "name": "detOrd_quantity",
-              "maxLength": ""
-            },
-            "status": {
-              "new": true
-            },
-            "db": {
-              "type": "decimal",
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "detOrd_date": {
-            "db_edits": {
-              "name": "detOrd_date",
-              "maxLength": ""
-            },
-            "status": {
-              "new": true
-            },
-            "db": {
-              "type": "datetime",
-              "primary": false,
-              "nullable": true
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
             }
           }
         },
-        "db": {
-          "engine": "InnoDB",
-          "schema": "xiad",
-          "collation": "utf8mb4_unicode_ci",
-          "system_versioned": false
-        }
+        "parent": "product"
       },
-      "cars": {
+      "promotion": {
         "db": {
           "engine": "InnoDB",
           "schema": "xiad",
@@ -214,14 +631,14 @@
           "system_versioned": false
         },
         "columns": {
-          "id": {
+          "promo_id": {
             "db": {
               "type": "increments",
               "primary": true,
               "nullable": false
             }
           },
-          "make": {
+          "promo_code": {
             "db": {
               "type": "string",
               "maxLength": 50,
@@ -229,81 +646,7 @@
               "nullable": true
             }
           },
-          "model": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "year": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          }
-        }
-      },
-      "countries": {
-        "db": {
-          "engine": "InnoDB",
-          "schema": "xiad",
-          "collation": "utf8mb4_unicode_ci",
-          "system_versioned": false
-        },
-        "columns": {
-          "id": {
-            "db": {
-              "type": "increments",
-              "primary": true,
-              "nullable": false
-            }
-          },
-          "country_code": {
-            "db": {
-              "type": "string",
-              "maxLength": 2,
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "country_name": {
-            "db": {
-              "type": "string",
-              "maxLength": 100,
-              "primary": false,
-              "nullable": false
-            }
-          }
-        }
-      },
-      "images": {
-        "db": {
-          "engine": "InnoDB",
-          "schema": "xiad",
-          "collation": "utf8mb4_unicode_ci",
-          "system_versioned": false
-        },
-        "columns": {
-          "id": {
-            "db": {
-              "type": "increments",
-              "primary": true,
-              "nullable": false
-            }
-          },
-          "image": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "description": {
+          "promo_desc": {
             "db": {
               "type": "text",
               "maxLength": 65535,
@@ -311,23 +654,21 @@
               "nullable": true
             }
           },
-          "category": {
+          "promo_dis": {
             "db": {
-              "type": "string",
-              "maxLength": 12,
+              "type": "decimal",
               "primary": false,
               "nullable": true
             }
           },
-          "author": {
+          "promo_startDate": {
             "db": {
-              "type": "string",
-              "maxLength": 50,
+              "type": "date",
               "primary": false,
               "nullable": true
             }
           },
-          "date": {
+          "promo_endDate": {
             "db": {
               "type": "date",
               "primary": false,
@@ -335,6 +676,265 @@
             }
           }
         }
+      },
+      "role": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "role_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "role": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
+      "salesReport": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "rep_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "br_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "br_id",
+              "inTable": "branch",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "rep_date": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_totalSales": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_totalOrder": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_csvPath": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_opening": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_closing": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_expenses": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_remarks": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_proLoss": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
+      "user": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "user_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "user_firstName": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_lastName": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_email": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_pw": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_dateSignup": {
+            "db": {
+              "type": "datetime",
+              "default": "knex.fn.now()",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_authCode": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_validated": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "sub": {
+          "user_clockInOut": "user_id"
+        }
+      },
+      "user_clockInOut": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "xiad",
+          "collation": "utf8mb4_unicode_ci",
+          "system_versioned": false
+        },
+        "columns": {
+          "cIO_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "cIO_in": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cIO_out": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "user",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "cIO_date": {
+            "db": {
+              "type": "date",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cIO_hrsWorked": {
+            "db": {
+              "type": "time",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        },
+        "parent": "user"
       }
     },
     "views": {},
