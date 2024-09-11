@@ -95,7 +95,7 @@
                 "type": "expression",
                 "name": ":P1",
                 "value": "{{NOW.formatDate('yyyy-MM-dd', false)}}",
-                "test": ""
+                "test": "2024-9-6"
               }
             ],
             "table": {

@@ -18,7 +18,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar1_collapse">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-item nav-link active" href="/" id="HomePage">Home</a>
+                    <a class="nav-item nav-link active" href="/Home" id="HomePage">Home</a>
                     <a class="nav-item nav-link" href="/admin_order" id="POS_page">POS</a><a class="nav-item nav-link" href="/admin_dashboard" id="Dashboard_page">Dashboard</a>
                     <a class="nav-item nav-link" href="/admin_product" id="Product_list">Products</a>
 
@@ -89,7 +89,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <button id="btn1" class="btn btn-outline-primary" type="submit">Submit</button>
+                        <button id="btn1" class="btn btn-outline-primary" type="submit" dmx-bind:disabled="select1.value.isEmpty()">Submit</button>
                     </form>
                 </div>
             </div>

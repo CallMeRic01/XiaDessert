@@ -293,7 +293,7 @@
                 "type": "expression",
                 "name": ":P1",
                 "value": "{{$_POST.cust_id}}",
-                "test": ""
+                "test": "3"
               }
             ],
             "table": {
@@ -321,7 +321,8 @@
                       "name": "cust_id"
                     }
                   },
-                  "operation": "="
+                  "operation": "=",
+                  "table": "customer"
                 }
               ],
               "conditional": null,
@@ -356,6 +357,21 @@
           "subject": "Loyalty Points",
           "fromName": "noreply@xiadessert",
           "fromEmail": "eric.lim@triwind.net",
+          "toName": "{{query1[0].cust_name}}",
+          "toEmail": "{{query1[0].cust_email}}",
+          "body": "You have successfully redeemed {{$_POST.pRedeemed}} free drinks\nYou have {{query1[0].cust_loyalP}} points left"
+        },
+        "disabled": true
+      },
+      {
+        "name": "",
+        "module": "mail",
+        "action": "send",
+        "options": {
+          "instance": "xiad_mail",
+          "subject": "Loyalty Points",
+          "fromName": "noreply@xiadessert",
+          "fromEmail": "noreply@xiadessert.fundingproexpert.com",
           "toName": "{{query1[0].cust_name}}",
           "toEmail": "{{query1[0].cust_email}}",
           "body": "You have successfully redeemed {{$_POST.pRedeemed}} free drinks\nYou have {{query1[0].cust_loyalP}} points left"

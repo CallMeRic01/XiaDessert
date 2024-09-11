@@ -21,8 +21,8 @@
       "page": "accountValidation"
     },
     {
-      "path": "/",
-      "page": "index",
+      "path": "/Home",
+      "page": "Home",
       "routeType": "page",
       "layout": "main",
       "exec": "/api/security/isAdmin"

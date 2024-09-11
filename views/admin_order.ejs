@@ -1,5 +1,5 @@
 <!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="admin_order" appConnect="local" components="{dmxBootstrap5TableGenerator:{},dmxNotifications:{},dmxBootstrap5Modal:{},dmxFormRepeat:{},dmxDatastore:{},dmxFormatter:{},dmxBootstrap5Tooltips:{},dmxBootstrap5Popovers:{},dmxTyped:{},dmxBootstrap5Alert:{},dmxDatePicker:{},dmxGooglePlaces:{},dmxAutocomplete:{},dmxValidator:{},dmxBootbox5:{}}" jquery_slim_35="cdn" moment_2="cdn" -->
-<dmx-serverconnect id="conn_viewOrder" url="/api/admin/order/viewOrder"></dmx-serverconnect>
+<dmx-serverconnect id="conn_viewOrder" url="/api/admin/order/viewOrder" noload="true"></dmx-serverconnect>
 <dmx-serverconnect id="conn_customerList" url="/api/admin/loyalty/customerList" dmx-param:cust_num="serverconnectform1.CustSearch.value" dmx-param:cust_name="serverconnectform1.CustSearch.value"></dmx-serverconnect>
 <dmx-serverconnect id="conn_totalSalesToday" url="/api/admin/sales/totalSalesToday"></dmx-serverconnect>
 <dmx-serverconnect id="conn_stockUpdate" url="/api/admin/order/updateStock"></dmx-serverconnect>
@@ -242,10 +242,10 @@
                                                     <th>Total amount</th>
                                                 </tr>
                                             </thead>
-                                            <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="conn_viewOrder.data.OrderList" id="tableRepeat2">
+                                            <tbody is="dmx-repeat" dmx-generator="bs5table" dmx-bind:repeat="conn_viewOrder.data.query" id="tableRepeat3">
                                                 <tr>
-                                                    <td dmx-text="ord_id"></td>
-                                                    <td dmx-text="ord_date"></td>
+                                                    <td dmx-text="ord_id" dmx-on:click=""></td>
+                                                    <td dmx-text="ord_date.formatDate('yyyy-dd-MM HH:mm:ss')"></td>
                                                     <td dmx-text="item_count"></td>
                                                     <td dmx-text="ord_totalAmount"></td>
                                                 </tr>

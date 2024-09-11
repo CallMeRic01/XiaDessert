@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "ord_id"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "custom",
+      "module": "dbupdater",
+      "action": "custom",
+      "options": {
+        "connection": "db"
+      },
+      "output": true
+    }
+  }
+}

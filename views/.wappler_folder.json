@@ -38,5 +38,9 @@
   "test_admin_order.ejs": {
     "layoutPage": "main",
     "description": ""
+  },
+  "Home.ejs": {
+    "layoutPage": "main",
+    "description": ""
   }
 }

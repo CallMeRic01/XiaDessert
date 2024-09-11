@@ -5,11 +5,11 @@
   "options": {
     "client": "mysql2",
     "connection": {
-      "host": "db",
-      "port": 3306,
-      "user": "admin",
-      "password": "mydatabase",
-      "database": "mydatabase"
+      "host": "127.0.0.1",
+      "port": 9906,
+      "user": "db_user",
+      "password": "Xiad",
+      "database": "xiad"
     }
   }
 }

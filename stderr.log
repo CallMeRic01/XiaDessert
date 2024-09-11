@@ -1,0 +1,1082 @@
+/home/fundingp/XiaD/lib/setup/config.js:86
+if (typeof config.cors?.origin == 'string') {
+                       ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (internal/modules/cjs/loader.js:915:16)
+    at Module._compile (internal/modules/cjs/loader.js:963:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/home/fundingp/XiaD/lib/server.js:10:16)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+/home/fundingp/XiaD/lib/setup/config.js:86
+if (typeof config.cors?.origin == 'string') {
+                       ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (internal/modules/cjs/loader.js:915:16)
+    at Module._compile (internal/modules/cjs/loader.js:963:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/home/fundingp/XiaD/lib/server.js:10:16)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+/home/fundingp/XiaD/lib/setup/config.js:86
+if (typeof config.cors?.origin == 'string') {
+                       ^
+
+SyntaxError: Unexpected token '.'
+    at wrapSafe (internal/modules/cjs/loader.js:915:16)
+    at Module._compile (internal/modules/cjs/loader.js:963:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/home/fundingp/XiaD/lib/server.js:10:16)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+2024-09-09T08:37:37.219Z server-connect:setup:config {
+  port: 3000,
+  debug: true,
+  secret: 'Need to be set',
+  tmpFolder: '/home/fundingp/XiaDessert/tmp',
+  abortOnDisconnect: false,
+  createApiRoutes: true,
+  compression: true,
+  redis: false,
+  cron: true,
+  static: { index: false },
+  session: {
+    name: 'xia_dessert.sid',
+    resave: false,
+    saveUninitialized: false,
+    store: { '$type': 'memory', ttl: 86400 }
+  },
+  cors: { origin: false, methods: 'GET,POST', credentials: true },
+  csrf: { enabled: false, exclude: 'GET,HEAD,OPTIONS' },
+  rateLimit: {
+    enabled: false,
+    duration: 60,
+    points: 100,
+    private: { provider: '', duration: 60, points: 1000 }
+  },
+  globals: {},
+  rateLimiter: {},
+  mail: {},
+  auth: {},
+  oauth: {},
+  db: {},
+  s3: {},
+  jwt: {},
+  stripe: {},
+  env: {}
+}
+2024-09-09T08:37:37.698Z server-connect:setup:session init session store { '$type': 'memory', ttl: 86400 }
+2024-09-09T08:37:37.775Z server-connect:setup:upload Upload middleware configured.
+2024-09-09T08:37:37.776Z server-connect:secure CSRF Protection initialized
+2024-09-09T08:37:37.787Z server-connect:setup:routes Api route /api/admin/employee/clockInOut(.json)? created
+2024-09-09T08:37:37.790Z server-connect:setup:routes Api route /api/admin/employee/clockInOutHistory(.json)? created
+2024-09-09T08:37:37.793Z server-connect:setup:routes Api route /api/admin/employee/clockOut(.json)? created
+2024-09-09T08:37:37.796Z server-connect:setup:routes Api route /api/admin/employee/list(.json)? created
+2024-09-09T08:37:37.799Z server-connect:setup:routes Api route /api/admin/loyalty/customerList(.json)? created
+2024-09-09T08:37:37.802Z server-connect:setup:routes Api route /api/admin/loyalty/customerReg(.json)? created
+2024-09-09T08:37:37.805Z server-connect:setup:routes Api route /api/admin/loyalty/redeemPoints(.json)? created
+2024-09-09T08:37:37.808Z server-connect:setup:routes Api route /api/admin/order/addCart(.json)? created
+2024-09-09T08:37:37.811Z server-connect:setup:routes Api route /api/admin/order/addOrderItems(.json)? created
+2024-09-09T08:37:37.815Z server-connect:setup:routes Api route /api/admin/order/createOrder(.json)? created
+2024-09-09T08:37:37.820Z server-connect:setup:routes Api route /api/admin/order/openClose(.json)? created
+2024-09-09T08:37:37.823Z server-connect:setup:routes Api route /api/admin/order/pullProduct(.json)? created
+2024-09-09T08:37:37.826Z server-connect:setup:routes Api route /api/admin/order/refundOrder(.json)? created
+2024-09-09T08:37:37.829Z server-connect:setup:routes Api route /api/admin/order/totalAmount(.json)? created
+2024-09-09T08:37:37.833Z server-connect:setup:routes Api route /api/admin/order/viewOrder(.json)? created
+2024-09-09T08:37:37.837Z server-connect:setup:routes Api route /api/admin/product/addProduct(.json)? created
+2024-09-09T08:37:37.840Z server-connect:setup:routes Api route /api/admin/product/assignProductsToDays(.json)? created
+2024-09-09T08:37:37.843Z server-connect:setup:routes Api route /api/admin/product/deleteProduct(.json)? created
+2024-09-09T08:37:37.846Z server-connect:setup:routes Api route /api/admin/product/getProduct(.json)? created
+2024-09-09T08:37:37.851Z server-connect:setup:routes Api route /api/admin/product/getProductsByDay(.json)? created
+2024-09-09T08:37:37.854Z server-connect:setup:routes Api route /api/admin/product/updateProduct(.json)? created
+2024-09-09T08:37:37.857Z server-connect:setup:routes Api route /api/admin/product/viewProduct(.json)? created
+2024-09-09T08:37:37.860Z server-connect:setup:routes Api route /api/admin/sales/filteredMonthSales(.json)? created
+2024-09-09T08:37:37.862Z server-connect:setup:routes Api route /api/admin/sales/filteredSales(.json)? created
+2024-09-09T08:37:37.865Z server-connect:setup:routes Api route /api/admin/sales/openCloseDatePick(.json)? created
+2024-09-09T08:37:37.867Z server-connect:setup:routes Api route /api/admin/sales/salesHistory(.json)? created
+2024-09-09T08:37:37.872Z server-connect:setup:routes Api route /api/admin/sales/todaySales(.json)? created
+2024-09-09T08:37:37.877Z server-connect:setup:routes Api route /api/admin/sales/topProductToday(.json)? created
+2024-09-09T08:37:37.879Z server-connect:setup:routes Api route /api/admin/sales/topProducts(.json)? created
+2024-09-09T08:37:37.880Z server-connect:setup:routes Api route /api/admin/sales/totalSalesToday(.json)? created
+2024-09-09T08:37:37.882Z server-connect:setup:routes Api route /api/csv(.json)? created
+2024-09-09T08:37:37.883Z server-connect:setup:routes Api route /api/registration/ResendCodeNow(.json)? created
+2024-09-09T08:37:37.885Z server-connect:setup:routes Api route /api/registration/login(.json)? created
+2024-09-09T08:37:37.889Z server-connect:setup:routes Api route /api/registration/logout(.json)? created
+2024-09-09T08:37:37.890Z server-connect:setup:routes Api route /api/registration/regcode(.json)? created
+2024-09-09T08:37:37.891Z server-connect:setup:routes Api route /api/registration/register(.json)? created
+2024-09-09T08:37:37.892Z server-connect:setup:routes Api route /api/registration/resendCode(.json)? created
+2024-09-09T08:37:37.892Z server-connect:setup:routes Api route /api/registration/resetPW(.json)? created
+2024-09-09T08:37:37.893Z server-connect:setup:routes Api route /api/registration/sendResetCode(.json)? created
+2024-09-09T08:37:37.894Z server-connect:setup:routes Api route /api/registration/validation(.json)? created
+2024-09-09T08:37:37.895Z server-connect:setup:routes Api route /api/registration/whoami(.json)? created
+2024-09-09T08:37:37.895Z server-connect:setup:routes Api route /api/security/isAdmin(.json)? created
+2024-09-09T08:37:37.896Z server-connect:setup:routes Api route /api/security/users/deleteStaff(.json)? created
+2024-09-09T08:37:37.897Z server-connect:setup:routes Api route /api/security/users/staffManagement(.json)? created
+2024-09-09T08:37:37.898Z server-connect:setup:routes Api route /api/security/users/updateStaff(.json)? created
+2024-09-09T08:37:37.898Z server-connect:setup:routes Api route /api/security/users/viewStaff(.json)? created
+2024-09-09T08:37:37.973Z server-connect:router Serving templateView /
+2024-09-09T08:37:37.975Z server-connect:app Executing action step restrict
+2024-09-09T08:37:37.975Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T08:37:38.026Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T08:37:38.027Z server-connect:server Got error? Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T08:37:39.151Z server-connect:router Serving templateView /
+2024-09-09T08:37:39.152Z server-connect:app Executing action step restrict
+2024-09-09T08:37:39.152Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T08:37:39.162Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T08:37:39.163Z server-connect:server Got error? Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:17:47.321Z server-connect:setup:config {
+  port: 3000,
+  debug: true,
+  secret: 'Need to be set',
+  tmpFolder: '/home/fundingp/XiaDessert/tmp',
+  abortOnDisconnect: false,
+  createApiRoutes: true,
+  compression: true,
+  redis: false,
+  cron: true,
+  static: { index: false },
+  session: {
+    name: 'xia_dessert.sid',
+    resave: false,
+    saveUninitialized: false,
+    store: { '$type': 'memory', ttl: 86400 }
+  },
+  cors: { origin: false, methods: 'GET,POST', credentials: true },
+  csrf: { enabled: false, exclude: 'GET,HEAD,OPTIONS' },
+  rateLimit: {
+    enabled: false,
+    duration: 60,
+    points: 100,
+    private: { provider: '', duration: 60, points: 1000 }
+  },
+  globals: {},
+  rateLimiter: {},
+  mail: {},
+  auth: {},
+  oauth: {},
+  db: {},
+  s3: {},
+  jwt: {},
+  stripe: {},
+  env: {}
+}
+2024-09-09T09:17:48.013Z server-connect:setup:session init session store { '$type': 'memory', ttl: 86400 }
+2024-09-09T09:17:48.096Z server-connect:setup:upload Upload middleware configured.
+2024-09-09T09:17:48.098Z server-connect:secure CSRF Protection initialized
+2024-09-09T09:17:48.110Z server-connect:setup:routes Api route /api/admin/employee/clockInOut(.json)? created
+2024-09-09T09:17:48.113Z server-connect:setup:routes Api route /api/admin/employee/clockInOutHistory(.json)? created
+2024-09-09T09:17:48.115Z server-connect:setup:routes Api route /api/admin/employee/clockOut(.json)? created
+2024-09-09T09:17:48.117Z server-connect:setup:routes Api route /api/admin/employee/list(.json)? created
+2024-09-09T09:17:48.120Z server-connect:setup:routes Api route /api/admin/loyalty/customerList(.json)? created
+2024-09-09T09:17:48.123Z server-connect:setup:routes Api route /api/admin/loyalty/customerReg(.json)? created
+2024-09-09T09:17:48.126Z server-connect:setup:routes Api route /api/admin/loyalty/redeemPoints(.json)? created
+2024-09-09T09:17:48.128Z server-connect:setup:routes Api route /api/admin/order/addCart(.json)? created
+2024-09-09T09:17:48.132Z server-connect:setup:routes Api route /api/admin/order/addOrderItems(.json)? created
+2024-09-09T09:17:48.138Z server-connect:setup:routes Api route /api/admin/order/createOrder(.json)? created
+2024-09-09T09:17:48.146Z server-connect:setup:routes Api route /api/admin/order/openClose(.json)? created
+2024-09-09T09:17:48.154Z server-connect:setup:routes Api route /api/admin/order/pullProduct(.json)? created
+2024-09-09T09:17:48.160Z server-connect:setup:routes Api route /api/admin/order/refundOrder(.json)? created
+2024-09-09T09:17:48.164Z server-connect:setup:routes Api route /api/admin/order/totalAmount(.json)? created
+2024-09-09T09:17:48.169Z server-connect:setup:routes Api route /api/admin/order/viewOrder(.json)? created
+2024-09-09T09:17:48.174Z server-connect:setup:routes Api route /api/admin/product/addProduct(.json)? created
+2024-09-09T09:17:48.176Z server-connect:setup:routes Api route /api/admin/product/assignProductsToDays(.json)? created
+2024-09-09T09:17:48.178Z server-connect:setup:routes Api route /api/admin/product/deleteProduct(.json)? created
+2024-09-09T09:17:48.182Z server-connect:setup:routes Api route /api/admin/product/getProduct(.json)? created
+2024-09-09T09:17:48.186Z server-connect:setup:routes Api route /api/admin/product/getProductsByDay(.json)? created
+2024-09-09T09:17:48.188Z server-connect:setup:routes Api route /api/admin/product/updateProduct(.json)? created
+2024-09-09T09:17:48.190Z server-connect:setup:routes Api route /api/admin/product/viewProduct(.json)? created
+2024-09-09T09:17:48.193Z server-connect:setup:routes Api route /api/admin/sales/filteredMonthSales(.json)? created
+2024-09-09T09:17:48.195Z server-connect:setup:routes Api route /api/admin/sales/filteredSales(.json)? created
+2024-09-09T09:17:48.197Z server-connect:setup:routes Api route /api/admin/sales/openCloseDatePick(.json)? created
+2024-09-09T09:17:48.199Z server-connect:setup:routes Api route /api/admin/sales/salesHistory(.json)? created
+2024-09-09T09:17:48.203Z server-connect:setup:routes Api route /api/admin/sales/todaySales(.json)? created
+2024-09-09T09:17:48.205Z server-connect:setup:routes Api route /api/admin/sales/topProductToday(.json)? created
+2024-09-09T09:17:48.217Z server-connect:setup:routes Api route /api/admin/sales/topProducts(.json)? created
+2024-09-09T09:17:48.222Z server-connect:setup:routes Api route /api/admin/sales/totalSalesToday(.json)? created
+2024-09-09T09:17:48.230Z server-connect:setup:routes Api route /api/csv(.json)? created
+2024-09-09T09:17:48.234Z server-connect:setup:routes Api route /api/registration/ResendCodeNow(.json)? created
+2024-09-09T09:17:48.243Z server-connect:setup:routes Api route /api/registration/login(.json)? created
+2024-09-09T09:17:48.245Z server-connect:setup:routes Api route /api/registration/logout(.json)? created
+2024-09-09T09:17:48.246Z server-connect:setup:routes Api route /api/registration/regcode(.json)? created
+2024-09-09T09:17:48.248Z server-connect:setup:routes Api route /api/registration/register(.json)? created
+2024-09-09T09:17:48.249Z server-connect:setup:routes Api route /api/registration/resendCode(.json)? created
+2024-09-09T09:17:48.251Z server-connect:setup:routes Api route /api/registration/resetPW(.json)? created
+2024-09-09T09:17:48.252Z server-connect:setup:routes Api route /api/registration/sendResetCode(.json)? created
+2024-09-09T09:17:48.254Z server-connect:setup:routes Api route /api/registration/validation(.json)? created
+2024-09-09T09:17:48.255Z server-connect:setup:routes Api route /api/registration/whoami(.json)? created
+2024-09-09T09:17:48.257Z server-connect:setup:routes Api route /api/security/isAdmin(.json)? created
+2024-09-09T09:17:48.260Z server-connect:setup:routes Api route /api/security/users/deleteStaff(.json)? created
+2024-09-09T09:17:48.262Z server-connect:setup:routes Api route /api/security/users/staffManagement(.json)? created
+2024-09-09T09:17:48.263Z server-connect:setup:routes Api route /api/security/users/updateStaff(.json)? created
+2024-09-09T09:17:48.265Z server-connect:setup:routes Api route /api/security/users/viewStaff(.json)? created
+2024-09-09T09:17:48.473Z server-connect:router Serving templateView /
+2024-09-09T09:17:48.476Z server-connect:app Executing action step restrict
+2024-09-09T09:17:48.477Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T09:17:48.604Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:17:48.605Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:35:34.133Z server-connect:router Serving templateView /
+2024-09-09T09:35:34.134Z server-connect:app Executing action step restrict
+2024-09-09T09:35:34.135Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T09:35:34.150Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:35:34.152Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:35:38.361Z server-connect:router Serving templateView /
+2024-09-09T09:35:38.361Z server-connect:app Executing action step restrict
+2024-09-09T09:35:38.362Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T09:35:38.374Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:35:38.376Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:36:32.519Z server-connect:router Serving templateView /
+2024-09-09T09:36:32.519Z server-connect:app Executing action step restrict
+2024-09-09T09:36:32.520Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T09:36:32.528Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T09:36:32.528Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:25:05.417Z server-connect:setup:config {
+  port: 3000,
+  debug: true,
+  secret: 'Need to be set',
+  tmpFolder: '/home/fundingp/XiaDessert/tmp',
+  abortOnDisconnect: false,
+  createApiRoutes: true,
+  compression: true,
+  redis: false,
+  cron: true,
+  static: { index: false },
+  session: {
+    name: 'xia_dessert.sid',
+    resave: false,
+    saveUninitialized: false,
+    store: { '$type': 'memory', ttl: 86400 }
+  },
+  cors: { origin: false, methods: 'GET,POST', credentials: true },
+  csrf: { enabled: false, exclude: 'GET,HEAD,OPTIONS' },
+  rateLimit: {
+    enabled: false,
+    duration: 60,
+    points: 100,
+    private: { provider: '', duration: 60, points: 1000 }
+  },
+  globals: {},
+  rateLimiter: {},
+  mail: {},
+  auth: {},
+  oauth: {},
+  db: {},
+  s3: {},
+  jwt: {},
+  stripe: {},
+  env: {}
+}
+2024-09-09T15:25:05.901Z server-connect:setup:session init session store { '$type': 'memory', ttl: 86400 }
+2024-09-09T15:25:05.954Z server-connect:setup:upload Upload middleware configured.
+2024-09-09T15:25:05.955Z server-connect:secure CSRF Protection initialized
+2024-09-09T15:25:05.962Z server-connect:setup:routes Api route /api/admin/employee/clockInOut(.json)? created
+2024-09-09T15:25:05.964Z server-connect:setup:routes Api route /api/admin/employee/clockInOutHistory(.json)? created
+2024-09-09T15:25:05.966Z server-connect:setup:routes Api route /api/admin/employee/clockOut(.json)? created
+2024-09-09T15:25:05.967Z server-connect:setup:routes Api route /api/admin/employee/list(.json)? created
+2024-09-09T15:25:05.969Z server-connect:setup:routes Api route /api/admin/loyalty/customerList(.json)? created
+2024-09-09T15:25:05.971Z server-connect:setup:routes Api route /api/admin/loyalty/customerReg(.json)? created
+2024-09-09T15:25:05.973Z server-connect:setup:routes Api route /api/admin/loyalty/redeemPoints(.json)? created
+2024-09-09T15:25:05.975Z server-connect:setup:routes Api route /api/admin/order/addCart(.json)? created
+2024-09-09T15:25:05.977Z server-connect:setup:routes Api route /api/admin/order/addOrderItems(.json)? created
+2024-09-09T15:25:05.979Z server-connect:setup:routes Api route /api/admin/order/createOrder(.json)? created
+2024-09-09T15:25:05.983Z server-connect:setup:routes Api route /api/admin/order/openClose(.json)? created
+2024-09-09T15:25:05.985Z server-connect:setup:routes Api route /api/admin/order/pullProduct(.json)? created
+2024-09-09T15:25:05.987Z server-connect:setup:routes Api route /api/admin/order/refundOrder(.json)? created
+2024-09-09T15:25:05.989Z server-connect:setup:routes Api route /api/admin/order/totalAmount(.json)? created
+2024-09-09T15:25:05.991Z server-connect:setup:routes Api route /api/admin/order/viewOrder(.json)? created
+2024-09-09T15:25:05.994Z server-connect:setup:routes Api route /api/admin/product/addProduct(.json)? created
+2024-09-09T15:25:05.996Z server-connect:setup:routes Api route /api/admin/product/assignProductsToDays(.json)? created
+2024-09-09T15:25:05.998Z server-connect:setup:routes Api route /api/admin/product/deleteProduct(.json)? created
+2024-09-09T15:25:06.001Z server-connect:setup:routes Api route /api/admin/product/getProduct(.json)? created
+2024-09-09T15:25:06.003Z server-connect:setup:routes Api route /api/admin/product/getProductsByDay(.json)? created
+2024-09-09T15:25:06.005Z server-connect:setup:routes Api route /api/admin/product/updateProduct(.json)? created
+2024-09-09T15:25:06.007Z server-connect:setup:routes Api route /api/admin/product/viewProduct(.json)? created
+2024-09-09T15:25:06.009Z server-connect:setup:routes Api route /api/admin/sales/filteredMonthSales(.json)? created
+2024-09-09T15:25:06.011Z server-connect:setup:routes Api route /api/admin/sales/filteredSales(.json)? created
+2024-09-09T15:25:06.012Z server-connect:setup:routes Api route /api/admin/sales/openCloseDatePick(.json)? created
+2024-09-09T15:25:06.014Z server-connect:setup:routes Api route /api/admin/sales/salesHistory(.json)? created
+2024-09-09T15:25:06.017Z server-connect:setup:routes Api route /api/admin/sales/todaySales(.json)? created
+2024-09-09T15:25:06.018Z server-connect:setup:routes Api route /api/admin/sales/topProductToday(.json)? created
+2024-09-09T15:25:06.025Z server-connect:setup:routes Api route /api/admin/sales/topProducts(.json)? created
+2024-09-09T15:25:06.028Z server-connect:setup:routes Api route /api/admin/sales/totalSalesToday(.json)? created
+2024-09-09T15:25:06.030Z server-connect:setup:routes Api route /api/csv(.json)? created
+2024-09-09T15:25:06.033Z server-connect:setup:routes Api route /api/registration/ResendCodeNow(.json)? created
+2024-09-09T15:25:06.035Z server-connect:setup:routes Api route /api/registration/login(.json)? created
+2024-09-09T15:25:06.037Z server-connect:setup:routes Api route /api/registration/logout(.json)? created
+2024-09-09T15:25:06.043Z server-connect:setup:routes Api route /api/registration/regcode(.json)? created
+2024-09-09T15:25:06.044Z server-connect:setup:routes Api route /api/registration/register(.json)? created
+2024-09-09T15:25:06.046Z server-connect:setup:routes Api route /api/registration/resendCode(.json)? created
+2024-09-09T15:25:06.047Z server-connect:setup:routes Api route /api/registration/resetPW(.json)? created
+2024-09-09T15:25:06.048Z server-connect:setup:routes Api route /api/registration/sendResetCode(.json)? created
+2024-09-09T15:25:06.049Z server-connect:setup:routes Api route /api/registration/validation(.json)? created
+2024-09-09T15:25:06.050Z server-connect:setup:routes Api route /api/registration/whoami(.json)? created
+2024-09-09T15:25:06.051Z server-connect:setup:routes Api route /api/security/isAdmin(.json)? created
+2024-09-09T15:25:06.053Z server-connect:setup:routes Api route /api/security/users/deleteStaff(.json)? created
+2024-09-09T15:25:06.054Z server-connect:setup:routes Api route /api/security/users/staffManagement(.json)? created
+2024-09-09T15:25:06.055Z server-connect:setup:routes Api route /api/security/users/updateStaff(.json)? created
+2024-09-09T15:25:06.056Z server-connect:setup:routes Api route /api/security/users/viewStaff(.json)? created
+2024-09-09T15:25:06.140Z server-connect:router Serving templateView /
+2024-09-09T15:25:06.141Z server-connect:app Executing action step restrict
+2024-09-09T15:25:06.141Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T15:25:06.191Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:25:06.192Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:25:10.019Z server-connect:router Serving templateView /
+2024-09-09T15:25:10.020Z server-connect:app Executing action step restrict
+2024-09-09T15:25:10.020Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T15:25:10.031Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:25:10.033Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:32:42.641Z server-connect:router Serving templateView /
+2024-09-09T15:32:42.642Z server-connect:app Executing action step restrict
+2024-09-09T15:32:42.643Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T15:32:42.651Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:32:42.652Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:32:44.631Z server-connect:router Serving templateView /
+2024-09-09T15:32:44.632Z server-connect:app Executing action step restrict
+2024-09-09T15:32:44.632Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T15:32:44.635Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T15:32:44.636Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T16:00:05.477Z server-connect:router Serving templateView /
+2024-09-09T16:00:05.477Z server-connect:app Executing action step restrict
+2024-09-09T16:00:05.478Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T16:00:05.486Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T16:00:05.486Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T18:55:29.334Z server-connect:router Serving templateView /
+2024-09-09T18:55:29.334Z server-connect:app Executing action step restrict
+2024-09-09T18:55:29.335Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T18:55:29.341Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T18:55:29.342Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T18:55:53.998Z server-connect:router Serving templateView /
+2024-09-09T18:55:53.998Z server-connect:app Executing action step restrict
+2024-09-09T18:55:53.999Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T18:55:54.007Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T18:55:54.007Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T19:59:23.177Z server-connect:router Serving templateView /
+2024-09-09T19:59:23.178Z server-connect:app Executing action step restrict
+2024-09-09T19:59:23.179Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T19:59:23.187Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T19:59:23.190Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:01:02.365Z server-connect:router Serving templateView /
+2024-09-09T20:01:02.366Z server-connect:app Executing action step restrict
+2024-09-09T20:01:02.366Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T20:01:02.371Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:01:02.371Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:09:18.203Z server-connect:router Serving templateView /
+2024-09-09T20:09:18.203Z server-connect:app Executing action step restrict
+2024-09-09T20:09:18.204Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T20:09:18.213Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:09:18.213Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:09:22.196Z server-connect:router Serving templateView /
+2024-09-09T20:09:22.196Z server-connect:app Executing action step restrict
+2024-09-09T20:09:22.196Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T20:09:22.201Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:09:22.201Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:47:18.452Z server-connect:router Serving templateView /
+2024-09-09T20:47:18.453Z server-connect:app Executing action step restrict
+2024-09-09T20:47:18.455Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T20:47:18.465Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:47:18.466Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:47:22.742Z server-connect:router Serving templateView /
+2024-09-09T20:47:22.743Z server-connect:app Executing action step restrict
+2024-09-09T20:47:22.743Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T20:47:22.749Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:47:22.749Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:47:34.196Z server-connect:router Serving templateView /
+2024-09-09T20:47:34.196Z server-connect:app Executing action step restrict
+2024-09-09T20:47:34.196Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T20:47:34.201Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T20:47:34.201Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T21:00:02.887Z server-connect:router Serving templateView /
+2024-09-09T21:00:02.888Z server-connect:app Executing action step restrict
+2024-09-09T21:00:02.889Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T21:00:02.901Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T21:00:02.902Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T21:00:07.000Z server-connect:router Serving templateView /
+2024-09-09T21:00:07.001Z server-connect:app Executing action step restrict
+2024-09-09T21:00:07.001Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T21:00:07.010Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T21:00:07.010Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T21:01:05.707Z server-connect:router Serving templateView /
+2024-09-09T21:01:05.708Z server-connect:app Executing action step restrict
+2024-09-09T21:01:05.708Z server-connect:app options: {
+  provider: 'xiaD',
+  permissions: [ 'Admin' ],
+  forbiddenUrl: '/admin_order',
+  loginUrl: '/login'
+}
+2024-09-09T21:01:05.717Z server-connect:output Error at restrict: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
+2024-09-09T21:01:05.718Z server-connect:server Error occurred: Error: Knex: run
+$ npm install mysql2 --save
+EEXIST: file already exists, uv_pipe_open
+    at Client_MySQL2.initializeDriver (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:33:13)
+    at new Client (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/client.js:83:12)
+    at new Client_MySQL (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql/index.js:22:1)
+    at new Client_MySQL2 (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/dialects/mysql2/index.js:9:1)
+    at knex (/home/fundingp/nodevenv/XiaDessert/16/lib/node_modules/knex/lib/knex-builder/Knex.js:16:28)
+    at App.setDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:490:23)
+    at App.getDbConnection (/home/fundingp/XiaDessert/lib/core/app.js:509:19)
+    at new DatabaseProvider (/home/fundingp/XiaDessert/lib/auth/database.js:9:23)
+    at App.setAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:243:22)
+    at App.getAuthProvider (/home/fundingp/XiaDessert/lib/core/app.js:260:25)
