@@ -69,6 +69,11 @@
       "path": "/test_admin_order",
       "page": "test_admin_order",
       "layout": "main"
+    },
+    {
+      "path": "/",
+      "page": "index",
+      "layout": "main"
     }
   ]
 }

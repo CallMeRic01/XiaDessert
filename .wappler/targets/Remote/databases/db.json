@@ -3,10 +3,10 @@
   "type": "mysql2",
   "connection": {
     "host": "127.0.0.1",
-    "port": 9906,
-    "user": "db_user",
-    "password": "Xiad",
-    "database": "xiad"
+    "port": 3306,
+    "user": "fundingp_xiad1",
+    "password": "Xiad123!@#Xiad",
+    "database": "fundingp_xiad"
   },
   "schema": {
     "tables": {
@@ -204,6 +204,65 @@
           "schema": "xiad",
           "collation": "utf8mb4_unicode_ci",
           "system_versioned": false
+        },
+        "columns": {
+          "detOrd_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "ord_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "ord_id",
+              "inTable": "order",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "pro_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "pro_id",
+              "inTable": "product",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "detOrd_quantity": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "detOrd_date": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cust_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "cust_id",
+              "inTable": "customer",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
         }
       },
       "ingredient": {
@@ -496,6 +555,44 @@
           "collation": "utf8mb4_unicode_ci",
           "system_versioned": false
         },
+        "columns": {
+          "pd_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "pd_day": {
+            "db": {
+              "type": "enum",
+              "enumValues": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "maxLength": 9,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pro_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "pro_id",
+              "inTable": "product",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        },
         "parent": "product"
       },
       "promotion": {
@@ -591,6 +688,92 @@
           "schema": "xiad",
           "collation": "utf8mb4_unicode_ci",
           "system_versioned": false
+        },
+        "columns": {
+          "rep_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "br_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "br_id",
+              "inTable": "branch",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "rep_date": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_totalSales": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_totalOrder": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_csvPath": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_opening": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_closing": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_expenses": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_remarks": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "rep_proLoss": {
+            "db": {
+              "type": "decimal",
+              "primary": false,
+              "nullable": true
+            }
+          }
         }
       },
       "user": {
@@ -675,6 +858,55 @@
           "schema": "xiad",
           "collation": "utf8mb4_unicode_ci",
           "system_versioned": false
+        },
+        "columns": {
+          "cIO_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "cIO_in": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cIO_out": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "user",
+              "referenceType": "integer",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "cIO_date": {
+            "db": {
+              "type": "date",
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "cIO_hrsWorked": {
+            "db": {
+              "type": "time",
+              "primary": false,
+              "nullable": true
+            }
+          }
         },
         "parent": "user"
       }

@@ -42,5 +42,9 @@
   "Home.ejs": {
     "layoutPage": "main",
     "description": ""
+  },
+  "index.ejs": {
+    "layoutPage": "main",
+    "description": ""
   }
 }
