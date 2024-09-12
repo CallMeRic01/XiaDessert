@@ -2,7 +2,7 @@
   "debug": false,
   "secret": "E4837xwZFo0Ywf0",
   "env": {
-    "DB_HOST": "101.99.77.170",
+    "DB_HOST": "127.0.0.1",
     "DB_PORT": "3306",
     "DB_USER": "fundingp_xiad1",
     "DB_PASSWORD": "Xiad123!@#Xiad",
