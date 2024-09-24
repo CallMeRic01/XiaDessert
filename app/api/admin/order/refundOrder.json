@@ -1,5 +1,9 @@
 {
   "meta": {
+    "options": {
+      "linkedFile": "/views/admin_order.ejs",
+      "linkedForm": "Refunding"
+    },
     "$_GET": [
       {
         "type": "text",
@@ -17,13 +21,122 @@
   },
   "exec": {
     "steps": {
-      "name": "custom",
-      "module": "dbupdater",
-      "action": "custom",
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
       "options": {
-        "connection": "db"
+        "connection": "db",
+        "sql": {
+          "type": "select",
+          "distinct": false,
+          "columns": [
+            {
+              "table": "detailsOrder",
+              "column": "ord_id",
+              "field": "detailsOrder.ord_id",
+              "recid": 1
+            },
+            {
+              "table": "detailsOrder",
+              "column": "pro_id",
+              "field": "detailsOrder.pro_id",
+              "recid": 2
+            },
+            {
+              "table": "product",
+              "column": "pro_name",
+              "field": "product.pro_name",
+              "recid": 3
+            },
+            {
+              "table": "product",
+              "column": "pro_price",
+              "field": "product.pro_price",
+              "recid": 4
+            },
+            {
+              "table": "detailsOrder",
+              "column": "detOrd_quantity",
+              "field": "detailsOrder.detOrd_quantity",
+              "recid": 5
+            }
+          ],
+          "table": {
+            "name": "detailsOrder",
+            "full": "detailsOrder"
+          },
+          "joins": [
+            {
+              "type": "INNER",
+              "table": "product",
+              "clauses": {
+                "condition": "AND",
+                "rules": [
+                  {
+                    "table": "product",
+                    "column": "pro_id",
+                    "field": "product.pro_id",
+                    "operation": "=",
+                    "operator": "equal",
+                    "value": {
+                      "table": "detailsOrder",
+                      "column": "pro_id",
+                      "field": "detailsOrder.pro_id"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "wheres": {
+            "condition": "AND",
+            "rules": [
+              {
+                "table": "detailsOrder",
+                "column": "ord_id",
+                "field": "detailsOrder.ord_id",
+                "operation": "=",
+                "operator": "equal",
+                "value": "{{$_GET.ord_id}}"
+              }
+            ]
+          },
+          "groupBy": [],
+          "orders": [],
+          "params": [
+            {
+              "name": ":P1",
+              "value": "{{$_GET.ord_id}}",
+              "test": "2723"
+            }
+          ]
+        }
       },
-      "output": true
+      "output": true,
+      "meta": [
+        {
+          "type": "number",
+          "name": "ord_id"
+        },
+        {
+          "type": "number",
+          "name": "pro_id"
+        },
+        {
+          "type": "text",
+          "name": "pro_name"
+        },
+        {
+          "type": "number",
+          "name": "pro_price"
+        },
+        {
+          "type": "number",
+          "name": "detOrd_quantity"
+        }
+      ],
+      "type": "dbconnector_select",
+      "outputType": "array"
     }
   }
 }

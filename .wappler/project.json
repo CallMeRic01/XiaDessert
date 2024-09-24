@@ -70,7 +70,7 @@
       "ftpPort": 21
     }
   ],
-  "activeTarget": "Remote",
+  "activeTarget": "Development",
   "projectType": "web",
   "extensions": [],
   "activeGitRemote": "XiaDessert",

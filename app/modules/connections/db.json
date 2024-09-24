@@ -5,11 +5,15 @@
   "options": {
     "client": "mysql2",
     "connection": {
-      "host": "127.0.0.1",
+      "host": "db",
       "port": 3306,
-      "user": "fundingp_xiad1",
-      "password": "Xiad123!@#Xiad",
-      "database": "fundingp_xiad"
-    }
-  }
+      "user": "db_user",
+      "password": "Xiad",
+      "database": "xiad"
+    },
+    "meta": {}
+  },
+  "actionFilePath": "file:///D:/XiaD/app/modules/connections/db.json",
+  "serverType": "node",
+  "fileName": "db.json"
 }
