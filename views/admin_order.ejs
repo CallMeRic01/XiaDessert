@@ -299,9 +299,9 @@
                                             <td dmx-text="pro_name"></td>
                                             <td dmx-text="pro_price"></td>
                                             <td>
-                                                <input id="quantityEdit" name="detOrd_quantity" type="number" class="form-control" dmx-bind:value="detOrd_quantity">
+                                                <input id="quantityEdit" name="detOrd_quantity[]" type="number" class="form-control" dmx-bind:value="detOrd_quantity">
 
-                                                <input id="ProductID" name="pro_id" type="hidden" class="form-control" dmx-bind:value="pro_id">
+                                                <input id="ProductID" name="pro_id[]" type="hidden" class="form-control" dmx-bind:value="pro_id">
                                                 <input id="totalPriceAmount" name="totalAmount[]" type="hidden" class="form-control" dmx-bind:value="(quantityEdit.value * pro_price)">
                                             </td>
                                             <td dmx-text="(quantityEdit.value * pro_price)"></td>

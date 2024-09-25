@@ -35,112 +35,264 @@
         "type": "text",
         "fieldName": "ord_totalAmount",
         "name": "ord_totalAmount"
+      },
+      {
+        "type": "array",
+        "name": "record",
+        "sub": [
+          {
+            "type": "number",
+            "name": "$_POST"
+          }
+        ]
       }
     ]
   },
   "exec": {
-    "steps": {
-      "name": "",
-      "module": "core",
-      "action": "condition",
-      "options": {
-        "if": "{{$_POST.ord_id}}",
-        "then": {
-          "steps": {
-            "name": "repeat1",
-            "module": "core",
-            "action": "repeat",
-            "options": {
-              "repeat": "{{$_POST.pro_id}}",
-              "outputFields": [],
-              "exec": {
-                "steps": {
-                  "name": "quantity",
-                  "module": "dbupdater",
-                  "action": "update",
-                  "options": {
-                    "connection": "db",
-                    "sql": {
-                      "type": "update",
-                      "values": [
-                        {
-                          "table": "detailsOrder",
-                          "column": "detOrd_quantity",
-                          "type": "number",
-                          "value": "{{$_POST.detOrd_quantity}}"
-                        }
-                      ],
-                      "table": "detailsOrder",
-                      "wheres": {
-                        "condition": "AND",
-                        "rules": [
+    "steps": [
+      {
+        "name": "",
+        "module": "core",
+        "action": "condition",
+        "options": {
+          "if": "{{$_POST.ord_id}}",
+          "then": {
+            "steps": {
+              "name": "repeat1",
+              "module": "core",
+              "action": "repeat",
+              "options": {
+                "repeat": "{{$_POST.pro_id[$index]}}",
+                "outputFields": [],
+                "exec": {
+                  "steps": {
+                    "name": "quantity",
+                    "module": "dbupdater",
+                    "action": "update",
+                    "options": {
+                      "connection": "db",
+                      "sql": {
+                        "type": "update",
+                        "values": [
                           {
-                            "id": "pro_id",
-                            "field": "pro_id",
-                            "type": "double",
-                            "operator": "equal",
-                            "value": "{{$_POST.pro_id}}",
-                            "data": {
-                              "column": "pro_id"
-                            },
-                            "operation": "="
+                            "table": "detailsOrder",
+                            "column": "detOrd_quantity",
+                            "type": "number",
+                            "value": "{{$_POST.detOrd_quantity}}"
                           }
                         ],
-                        "conditional": null,
-                        "valid": true
-                      },
-                      "returning": "detOrd_id",
-                      "query": "update `detailsOrder` set `detOrd_quantity` = ? where `pro_id` = ?",
-                      "params": [
-                        {
-                          "name": ":P1",
-                          "type": "expression",
-                          "value": "{{$_POST.detOrd_quantity}}",
-                          "test": ""
-                        },
-                        {
-                          "operator": "equal",
-                          "type": "expression",
-                          "name": ":P2",
-                          "value": "{{$_POST.pro_id}}",
-                          "test": ""
+                        "table": "detailsOrder",
+                        "returning": "detOrd_id",
+                        "query": "update `detailsOrder` set `detOrd_quantity` = ? where `pro_id` = ?",
+                        "params": [
+                          {
+                            "name": ":P1",
+                            "type": "expression",
+                            "value": "{{$_POST.detOrd_quantity}}",
+                            "test": ""
+                          },
+                          {
+                            "operator": "equal",
+                            "type": "expression",
+                            "name": ":P2",
+                            "value": "{{$_POST.pro_id[$index}}",
+                            "test": ""
+                          }
+                        ],
+                        "wheres": {
+                          "condition": "AND",
+                          "rules": [
+                            {
+                              "id": "pro_id",
+                              "field": "pro_id",
+                              "type": "double",
+                              "operator": "equal",
+                              "value": "{{$_POST.pro_id[$index}}",
+                              "data": {
+                                "column": "pro_id"
+                              },
+                              "operation": "="
+                            }
+                          ],
+                          "conditional": null,
+                          "valid": true
                         }
-                      ]
-                    }
-                  },
-                  "meta": [
-                    {
-                      "name": "affected",
-                      "type": "number"
-                    }
-                  ]
+                      }
+                    },
+                    "meta": [
+                      {
+                        "name": "affected",
+                        "type": "number"
+                      }
+                    ]
+                  }
                 }
-              }
-            },
-            "output": true,
-            "meta": [
-              {
-                "name": "$index",
-                "type": "number"
               },
-              {
-                "name": "$number",
-                "type": "number"
-              },
-              {
-                "name": "$name",
-                "type": "text"
-              },
-              {
-                "name": "$value",
-                "type": "object"
-              }
-            ],
-            "outputType": "array"
+              "output": true,
+              "meta": [
+                {
+                  "name": "$index",
+                  "type": "number"
+                },
+                {
+                  "name": "$number",
+                  "type": "number"
+                },
+                {
+                  "name": "$name",
+                  "type": "text"
+                },
+                {
+                  "name": "$value",
+                  "type": "object"
+                }
+              ],
+              "outputType": "array"
+            }
           }
-        }
+        },
+        "outputType": "boolean"
       },
-      "outputType": "boolean"
-    }
+      {
+        "name": "repeat",
+        "module": "core",
+        "action": "repeat",
+        "options": {
+          "repeat": "{{$_POST.ord_id}}",
+          "outputFields": [],
+          "exec": {
+            "steps": {
+              "name": "",
+              "module": "core",
+              "action": "condition",
+              "options": {
+                "if": "{{$_POST.pro_id}}",
+                "then": {
+                  "steps": {
+                    "name": "repeat2",
+                    "module": "core",
+                    "action": "repeat",
+                    "options": {
+                      "repeat": "{{$_POST.pro_id}}",
+                      "outputFields": [],
+                      "exec": {
+                        "steps": {
+                          "name": "quantity_copy",
+                          "module": "dbupdater",
+                          "action": "update",
+                          "options": {
+                            "connection": "db",
+                            "sql": {
+                              "type": "update",
+                              "values": [
+                                {
+                                  "table": "detailsOrder",
+                                  "column": "detOrd_quantity",
+                                  "type": "number",
+                                  "value": "{{$_POST.detOrd_quantity}}"
+                                }
+                              ],
+                              "table": "detailsOrder",
+                              "returning": "detOrd_id",
+                              "query": "update `detailsOrder` set `detOrd_quantity` = ? where `pro_id` = ?",
+                              "params": [
+                                {
+                                  "name": ":P1",
+                                  "type": "expression",
+                                  "value": "{{$_POST.detOrd_quantity}}",
+                                  "test": ""
+                                },
+                                {
+                                  "operator": "equal",
+                                  "type": "expression",
+                                  "name": ":P2",
+                                  "value": "{{$_POST.pro_id}}",
+                                  "test": ""
+                                }
+                              ],
+                              "wheres": {
+                                "condition": "AND",
+                                "rules": [
+                                  {
+                                    "id": "pro_id",
+                                    "field": "pro_id",
+                                    "type": "double",
+                                    "operator": "equal",
+                                    "value": "{{$_POST.pro_id}}",
+                                    "data": {
+                                      "column": "pro_id"
+                                    },
+                                    "operation": "="
+                                  }
+                                ],
+                                "conditional": null,
+                                "valid": true
+                              }
+                            }
+                          },
+                          "meta": [
+                            {
+                              "name": "affected",
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "output": true,
+                    "meta": [
+                      {
+                        "name": "$index",
+                        "type": "number"
+                      },
+                      {
+                        "name": "$number",
+                        "type": "number"
+                      },
+                      {
+                        "name": "$name",
+                        "type": "text"
+                      },
+                      {
+                        "name": "$value",
+                        "type": "object"
+                      }
+                    ],
+                    "outputType": "array"
+                  }
+                }
+              },
+              "outputType": "boolean"
+            }
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "name": "$index",
+            "type": "number"
+          },
+          {
+            "name": "$number",
+            "type": "number"
+          },
+          {
+            "name": "$name",
+            "type": "text"
+          },
+          {
+            "name": "$value",
+            "type": "object"
+          },
+          {
+            "name": "repeat2",
+            "type": "array",
+            "sub": []
+          }
+        ],
+        "outputType": "array",
+        "disabled": true
+      }
+    ]
   }
 }
